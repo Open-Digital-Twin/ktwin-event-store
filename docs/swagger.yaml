@@ -1,0 +1,148 @@
+info:
+  contact: {}
+paths:
+  /twin-components:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint returns all Twin Components registered in the Platform.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get All Twin Components
+      tags:
+      - TwinComponent
+    post:
+      consumes:
+      - application/json
+      description: This endpoint creates the Twin Component.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create Twin Component
+      tags:
+      - TwinComponent
+    put:
+      consumes:
+      - application/json
+      description: This endpoint updates the Twin Component.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Update Twin Component
+      tags:
+      - TwinComponent
+  /twin-components/{componentId}:
+    delete:
+      consumes:
+      - application/json
+      description: This endpoint deletes the Twin Component.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete Twin Component
+      tags:
+      - TwinComponent
+    get:
+      consumes:
+      - application/json
+      description: This endpoint returns the Twin Component by id.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Component by Id
+      tags:
+      - TwinComponent
+  /twin-instances:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get All Twin Instances
+      tags:
+      - TwinInstance
+    post:
+      consumes:
+      - application/json
+      description: This endpoint creates a Twin Instance.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create Twin Instance
+      tags:
+      - TwinInstance
+    put:
+      consumes:
+      - application/json
+      description: This endpoint updates the Twin Instance.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Update Twin Instance
+      tags:
+      - TwinInstance
+  /twin-instances/{instanceId}:
+    delete:
+      consumes:
+      - application/json
+      description: This endpoint deletes the Twin Instance.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete Twin Instance
+      tags:
+      - TwinInstance
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get One Twin Instance
+      tags:
+      - TwinInstance
+swagger: "2.0"
