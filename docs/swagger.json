@@ -113,6 +113,52 @@
                 }
             }
         },
+        "/twin-components/{componentId}/classes": {
+            "get": {
+                "description": "This endpoint get the Twin Component classes.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinComponent"
+                ],
+                "summary": "Get Twin Component Classes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/twin-components/{componentId}/classes/{classId}": {
+            "get": {
+                "description": "This endpoint get the Twin Component class by Id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinComponent"
+                ],
+                "summary": "Get Twin Component Class by Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/twin-instances": {
             "get": {
                 "description": "do ping",

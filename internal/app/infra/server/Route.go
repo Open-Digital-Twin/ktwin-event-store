@@ -14,6 +14,8 @@ func ConfigureRoutes(r *gin.Engine) {
 			tc.POST("", CreateTwinComponent)
 			tc.PUT("", UpdateTwinComponent)
 			tc.DELETE("", UpdateTwinComponent)
+			tc.GET("/classes", GetTwinComponentClasses)
+			tc.GET("/classes/{classId}", GetOneTwinComponentClass)
 		}
 
 		ti := v1.Group("/twin-instances")

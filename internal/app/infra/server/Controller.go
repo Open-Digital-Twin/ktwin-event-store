@@ -71,6 +71,34 @@ func DeleteTwinComponent(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
+// Get Twin Component Classes
+// @Summary Get Twin Component Classes
+// @Schemes
+// @Description This endpoint get the Twin Component classes.
+// @Tags TwinComponent
+// @Accept json
+// @Produce json
+// @Success 200 {string} Helloworld
+// @Router /twin-components/{componentId}/classes [get]
+func GetTwinComponentClasses(g *gin.Context) {
+	g.JSON(http.StatusOK, "helloworld")
+}
+
+// Get Twin Component Class by Id
+// @Summary Get Twin Component Class by Id
+// @Schemes
+// @Description This endpoint get the Twin Component class by Id.
+// @Tags TwinComponent
+// @Accept json
+// @Produce json
+// @Success 200 {string} Helloworld
+// @Router /twin-components/{componentId}/classes/{classId} [get]
+func GetOneTwinComponentClass(g *gin.Context) {
+	g.JSON(http.StatusOK, "helloworld")
+}
+
+// Twin Instances
+
 // Get All Twin Instances godoc
 // @Summary Get All Twin Instances
 // @Schemes

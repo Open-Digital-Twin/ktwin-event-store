@@ -73,6 +73,36 @@ paths:
       summary: Get Twin Component by Id
       tags:
       - TwinComponent
+  /twin-components/{componentId}/classes:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint get the Twin Component classes.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Component Classes
+      tags:
+      - TwinComponent
+  /twin-components/{componentId}/classes/{classId}:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint get the Twin Component class by Id.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Component Class by Id
+      tags:
+      - TwinComponent
   /twin-instances:
     get:
       consumes:
