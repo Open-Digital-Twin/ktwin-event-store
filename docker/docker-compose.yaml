@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  scylla-node1:
+    container_name: scylla
+    image: scylladb/scylla:4.5.0
+    restart: always
+    ports:
+      - 9042:9042
+    volumes:
+      - "./scylladb/scripts/scylla.yaml:/etc/scylla/scylla.yaml"
+      - "./scylladb/scripts/cassandra-rackdc.properties.dc1:/etc/scylla/cassandra-rackdc.properties"
+      - "./scylladb/scripts/create-keyspaces.cql:/create-keyspaces.cql"
