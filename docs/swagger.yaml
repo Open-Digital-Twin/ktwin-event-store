@@ -1,11 +1,11 @@
 info:
   contact: {}
 paths:
-  /twin-components:
+  /twin-interfaces:
     get:
       consumes:
       - application/json
-      description: This endpoint returns all Twin Components registered in the Platform.
+      description: This endpoint returns all Twin Interfaces registered in the Platform.
       produces:
       - application/json
       responses:
@@ -13,13 +13,13 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Get All Twin Components
+      summary: Get All Twin Interfaces
       tags:
-      - TwinComponent
+      - TwinInterface
     post:
       consumes:
       - application/json
-      description: This endpoint creates the Twin Component.
+      description: This endpoint creates the Twin Interface.
       produces:
       - application/json
       responses:
@@ -27,13 +27,13 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Create Twin Component
+      summary: Create Twin Interface
       tags:
-      - TwinComponent
+      - TwinInterface
     put:
       consumes:
       - application/json
-      description: This endpoint updates the Twin Component.
+      description: This endpoint updates the Twin Interface.
       produces:
       - application/json
       responses:
@@ -41,14 +41,14 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Update Twin Component
+      summary: Update Twin Interface
       tags:
-      - TwinComponent
-  /twin-components/{componentId}:
+      - TwinInterface
+  /twin-interfaces/{interfaceId}:
     delete:
       consumes:
       - application/json
-      description: This endpoint deletes the Twin Component.
+      description: This endpoint deletes the Twin Interface.
       produces:
       - application/json
       responses:
@@ -56,13 +56,13 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Delete Twin Component
+      summary: Delete Twin Interface
       tags:
-      - TwinComponent
+      - TwinInterface
     get:
       consumes:
       - application/json
-      description: This endpoint returns the Twin Component by id.
+      description: This endpoint returns the Twin Interface by id.
       produces:
       - application/json
       responses:
@@ -70,14 +70,14 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Get Twin Component by Id
+      summary: Get Twin Interface by Id
       tags:
-      - TwinComponent
-  /twin-components/{componentId}/classes:
+      - TwinInterface
+  /twin-interfaces/{interfaceId}/classes:
     get:
       consumes:
       - application/json
-      description: This endpoint get the Twin Component classes.
+      description: This endpoint get the Twin Interface classes.
       produces:
       - application/json
       responses:
@@ -85,14 +85,14 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Get Twin Component Classes
+      summary: Get Twin Interface Classes
       tags:
-      - TwinComponent
-  /twin-components/{componentId}/classes/{classId}:
+      - TwinInterface
+  /twin-interfaces/{interfaceId}/classes/{classId}:
     get:
       consumes:
       - application/json
-      description: This endpoint get the Twin Component class by Id.
+      description: This endpoint get the Twin Interface class by Id.
       produces:
       - application/json
       responses:
@@ -100,9 +100,9 @@ paths:
           description: OK
           schema:
             type: string
-      summary: Get Twin Component Class by Id
+      summary: Get Twin Interface Class by Id
       tags:
-      - TwinComponent
+      - TwinInterface
   /twin-instances:
     get:
       consumes:

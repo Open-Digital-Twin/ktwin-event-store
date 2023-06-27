@@ -1,21 +1,21 @@
 package controller
 
-type TwinComponentController interface {
-	GetAllTwinComponents()
-	GetOneTwinComponents()
+type TwinInterfaceController interface {
+	GetAllTwinInterfaces()
+	GetOneTwinInterfaces()
 }
 
-func NewTwinComponentController() TwinComponentController {
-	return &twinComponentController{}
+func NewTwinInterfaceController() TwinInterfaceController {
+	return &twinInterfaceController{}
 }
 
-type twinComponentController struct {
+type twinInterfaceController struct {
 }
 
-func (t *twinComponentController) GetAllTwinComponents() {
+func (t *twinInterfaceController) GetAllTwinInterfaces() {
 
 }
 
-func (t *twinComponentController) GetOneTwinComponents() {
+func (t *twinInterfaceController) GetOneTwinInterfaces() {
 
 }

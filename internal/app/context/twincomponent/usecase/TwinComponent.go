@@ -1,6 +1,6 @@
 package usecase
 
-type TwinComponent struct {
+type TwinInterface struct {
 	Id      string      `json:"id"`
 	Name    string      `json:"name"`
 	Classes []TwinClass `json:"classes"`

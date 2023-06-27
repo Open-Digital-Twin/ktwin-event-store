@@ -6,94 +6,94 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Get All Twin Components godoc
-// @Summary Get All Twin Components
+// Get All Twin Interfaces godoc
+// @Summary Get All Twin Interfaces
 // @Schemes
-// @Description This endpoint returns all Twin Components registered in the Platform.
-// @Tags TwinComponent
+// @Description This endpoint returns all Twin Interfaces registered in the Platform.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components [get]
-func GetAllTwinComponents(g *gin.Context) {
+// @Router /twin-interfaces [get]
+func GetAllTwinInterfaces(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Get Twin Component by Id godoc
-// @Summary Get Twin Component by Id
+// Get Twin Interface by Id godoc
+// @Summary Get Twin Interface by Id
 // @Schemes
-// @Description This endpoint returns the Twin Component by id.
-// @Tags TwinComponent
+// @Description This endpoint returns the Twin Interface by id.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components/{componentId} [get]
-func GetOneTwinComponents(g *gin.Context) {
+// @Router /twin-interfaces/{interfaceId} [get]
+func GetOneTwinInterfaces(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Create Twin Component
-// @Summary Create Twin Component
+// Create Twin Interface
+// @Summary Create Twin Interface
 // @Schemes
-// @Description This endpoint creates the Twin Component.
-// @Tags TwinComponent
+// @Description This endpoint creates the Twin Interface.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components [post]
-func CreateTwinComponent(g *gin.Context) {
+// @Router /twin-interfaces [post]
+func CreateTwinInterface(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Update Twin Component
-// @Summary Update Twin Component
+// Update Twin Interface
+// @Summary Update Twin Interface
 // @Schemes
-// @Description This endpoint updates the Twin Component.
-// @Tags TwinComponent
+// @Description This endpoint updates the Twin Interface.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components [put]
-func UpdateTwinComponent(g *gin.Context) {
+// @Router /twin-interfaces [put]
+func UpdateTwinInterface(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Delete Twin Component
-// @Summary Delete Twin Component
+// Delete Twin Interface
+// @Summary Delete Twin Interface
 // @Schemes
-// @Description This endpoint deletes the Twin Component.
-// @Tags TwinComponent
+// @Description This endpoint deletes the Twin Interface.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components/{componentId} [delete]
-func DeleteTwinComponent(g *gin.Context) {
+// @Router /twin-interfaces/{interfaceId} [delete]
+func DeleteTwinInterface(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Get Twin Component Classes
-// @Summary Get Twin Component Classes
+// Get Twin Interface Classes
+// @Summary Get Twin Interface Classes
 // @Schemes
-// @Description This endpoint get the Twin Component classes.
-// @Tags TwinComponent
+// @Description This endpoint get the Twin Interface classes.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components/{componentId}/classes [get]
-func GetTwinComponentClasses(g *gin.Context) {
+// @Router /twin-interfaces/{interfaceId}/classes [get]
+func GetTwinInterfaceClasses(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Get Twin Component Class by Id
-// @Summary Get Twin Component Class by Id
+// Get Twin Interface Class by Id
+// @Summary Get Twin Interface Class by Id
 // @Schemes
-// @Description This endpoint get the Twin Component class by Id.
-// @Tags TwinComponent
+// @Description This endpoint get the Twin Interface class by Id.
+// @Tags TwinInterface
 // @Accept json
 // @Produce json
 // @Success 200 {string} Helloworld
-// @Router /twin-components/{componentId}/classes/{classId} [get]
-func GetOneTwinComponentClass(g *gin.Context) {
+// @Router /twin-interfaces/{interfaceId}/classes/{classId} [get]
+func GetOneTwinInterfaceClass(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 

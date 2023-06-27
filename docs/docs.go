@@ -16,9 +16,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/twin-components": {
+        "/twin-interfaces": {
             "get": {
-                "description": "This endpoint returns all Twin Components registered in the Platform.",
+                "description": "This endpoint returns all Twin Interfaces registered in the Platform.",
                 "consumes": [
                     "application/json"
                 ],
@@ -26,9 +26,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Get All Twin Components",
+                "summary": "Get All Twin Interfaces",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -39,7 +39,7 @@ const docTemplate = `{
                 }
             },
             "put": {
-                "description": "This endpoint updates the Twin Component.",
+                "description": "This endpoint updates the Twin Interface.",
                 "consumes": [
                     "application/json"
                 ],
@@ -47,9 +47,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Update Twin Component",
+                "summary": "Update Twin Interface",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -60,7 +60,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "This endpoint creates the Twin Component.",
+                "description": "This endpoint creates the Twin Interface.",
                 "consumes": [
                     "application/json"
                 ],
@@ -68,9 +68,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Create Twin Component",
+                "summary": "Create Twin Interface",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -81,9 +81,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/twin-components/{componentId}": {
+        "/twin-interfaces/{interfaceId}": {
             "get": {
-                "description": "This endpoint returns the Twin Component by id.",
+                "description": "This endpoint returns the Twin Interface by id.",
                 "consumes": [
                     "application/json"
                 ],
@@ -91,9 +91,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Get Twin Component by Id",
+                "summary": "Get Twin Interface by Id",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -104,7 +104,7 @@ const docTemplate = `{
                 }
             },
             "delete": {
-                "description": "This endpoint deletes the Twin Component.",
+                "description": "This endpoint deletes the Twin Interface.",
                 "consumes": [
                     "application/json"
                 ],
@@ -112,9 +112,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Delete Twin Component",
+                "summary": "Delete Twin Interface",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -125,9 +125,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/twin-components/{componentId}/classes": {
+        "/twin-interfaces/{interfaceId}/classes": {
             "get": {
-                "description": "This endpoint get the Twin Component classes.",
+                "description": "This endpoint get the Twin Interface classes.",
                 "consumes": [
                     "application/json"
                 ],
@@ -135,9 +135,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Get Twin Component Classes",
+                "summary": "Get Twin Interface Classes",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -148,9 +148,9 @@ const docTemplate = `{
                 }
             }
         },
-        "/twin-components/{componentId}/classes/{classId}": {
+        "/twin-interfaces/{interfaceId}/classes/{classId}": {
             "get": {
-                "description": "This endpoint get the Twin Component class by Id.",
+                "description": "This endpoint get the Twin Interface class by Id.",
                 "consumes": [
                     "application/json"
                 ],
@@ -158,9 +158,9 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinComponent"
+                    "TwinInterface"
                 ],
-                "summary": "Get Twin Component Class by Id",
+                "summary": "Get Twin Interface Class by Id",
                 "responses": {
                     "200": {
                         "description": "OK",

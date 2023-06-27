@@ -7,15 +7,15 @@ import (
 func ConfigureRoutes(r *gin.Engine) {
 	v1 := r.Group("/api/v1")
 	{
-		tc := v1.Group("/twin-components")
+		tc := v1.Group("/twin-interfaces")
 		{
-			tc.GET("", GetAllTwinComponents)
-			tc.GET("/", GetOneTwinComponents)
-			tc.POST("", CreateTwinComponent)
-			tc.PUT("", UpdateTwinComponent)
-			tc.DELETE("", UpdateTwinComponent)
-			tc.GET("/classes", GetTwinComponentClasses)
-			tc.GET("/classes/{classId}", GetOneTwinComponentClass)
+			tc.GET("", GetAllTwinInterfaces)
+			tc.GET("/", GetOneTwinInterfaces)
+			tc.POST("", CreateTwinInterface)
+			tc.PUT("", UpdateTwinInterface)
+			tc.DELETE("", UpdateTwinInterface)
+			tc.GET("/classes", GetTwinInterfaceClasses)
+			tc.GET("/classes/{classId}", GetOneTwinInterfaceClass)
 		}
 
 		ti := v1.Group("/twin-instances")
@@ -28,8 +28,8 @@ func ConfigureRoutes(r *gin.Engine) {
 
 		tt := v1.Group("/twin-thread")
 		{
-			tt.GET("", GetAllTwinComponents)
-			tt.GET("/", GetOneTwinComponents)
+			tt.GET("", GetAllTwinInterfaces)
+			tt.GET("/", GetOneTwinInterfaces)
 		}
 	}
 }
