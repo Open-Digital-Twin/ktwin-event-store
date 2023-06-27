@@ -38,27 +38,6 @@ const docTemplate = `{
                     }
                 }
             },
-            "put": {
-                "description": "This endpoint updates the Twin Instance.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInstance"
-                ],
-                "summary": "Update Twin Instance",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
             "post": {
                 "description": "This endpoint creates a Twin Instance.",
                 "consumes": [
@@ -226,27 +205,6 @@ const docTemplate = `{
                     "TwinInterface"
                 ],
                 "summary": "Get All Twin Interfaces",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "This endpoint updates the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Update Twin Interface",
                 "responses": {
                     "200": {
                         "description": "OK",

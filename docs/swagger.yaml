@@ -30,20 +30,6 @@ paths:
       summary: Create Twin Instance
       tags:
       - TwinInstance
-    put:
-      consumes:
-      - application/json
-      description: This endpoint updates the Twin Instance.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Update Twin Instance
-      tags:
-      - TwinInstance
   /twin-instances/{instanceId}:
     delete:
       consumes:
@@ -158,20 +144,6 @@ paths:
           schema:
             type: string
       summary: Create Twin Interface
-      tags:
-      - TwinInterface
-    put:
-      consumes:
-      - application/json
-      description: This endpoint updates the Twin Interface.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Update Twin Interface
       tags:
       - TwinInterface
   /twin-interfaces/{interfaceId}:

@@ -45,19 +45,6 @@ func CreateTwinInterface(g *gin.Context) {
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
-// Update Twin Interface
-// @Summary Update Twin Interface
-// @Schemes
-// @Description This endpoint updates the Twin Interface.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces [put]
-func UpdateTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
-
 // Delete Twin Interface
 // @Summary Delete Twin Interface
 // @Schemes
@@ -109,19 +96,6 @@ func GetOneTwinInstances(g *gin.Context) {
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances [post]
 func CreateTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
-
-// Update Twin Instance godoc
-// @Summary Update Twin Instance
-// @Schemes
-// @Description This endpoint updates the Twin Instance.
-// @Tags TwinInstance
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances [put]
-func UpdateTwinInstance(g *gin.Context) {
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
