@@ -24,10 +24,12 @@ func ConfigureRoutes(r *gin.Engine) {
 			ti.PUT("", UpdateTwinInstance)
 		}
 
-		tt := v1.Group("/twin-thread")
+		te := v1.Group("/twin-events")
 		{
-			tt.GET("", GetAllTwinInterfaces)
-			tt.GET("/", GetOneTwinInterfaces)
+			te.GET("", GetAllTwinInstanceEvents)
+			te.GET("/", GetOneTwinInstancesEvent)
+			te.POST("", CreateTwinInstanceEvent)
+			te.DELETE("", DeleteTwinInstanceEvent)
 		}
 	}
 }
