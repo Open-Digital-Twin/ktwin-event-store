@@ -4,161 +4,6 @@
         "contact": {}
     },
     "paths": {
-        "/twin-interfaces": {
-            "get": {
-                "description": "This endpoint returns all Twin Interfaces registered in the Platform.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get All Twin Interfaces",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "description": "This endpoint updates the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Update Twin Interface",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "This endpoint creates the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Create Twin Interface",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/twin-interfaces/{interfaceId}": {
-            "get": {
-                "description": "This endpoint returns the Twin Interface by id.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get Twin Interface by Id",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "This endpoint deletes the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Delete Twin Interface",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/twin-interfaces/{interfaceId}/classes": {
-            "get": {
-                "description": "This endpoint get the Twin Interface classes.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get Twin Interface Classes",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/twin-interfaces/{interfaceId}/classes/{classId}": {
-            "get": {
-                "description": "This endpoint get the Twin Interface class by Id.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get Twin Interface Class by Id",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/twin-instances": {
             "get": {
                 "description": "do ping",
@@ -258,6 +103,115 @@
                     "TwinInstance"
                 ],
                 "summary": "Delete Twin Instance",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/twin-interfaces": {
+            "get": {
+                "description": "This endpoint returns all Twin Interfaces registered in the Platform.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterface"
+                ],
+                "summary": "Get All Twin Interfaces",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "This endpoint updates the Twin Interface.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterface"
+                ],
+                "summary": "Update Twin Interface",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint creates the Twin Interface.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterface"
+                ],
+                "summary": "Create Twin Interface",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/twin-interfaces/{interfaceId}": {
+            "get": {
+                "description": "This endpoint returns the Twin Interface by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterface"
+                ],
+                "summary": "Get Twin Interface by Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "This endpoint deletes the Twin Interface.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterface"
+                ],
+                "summary": "Delete Twin Interface",
                 "responses": {
                     "200": {
                         "description": "OK",

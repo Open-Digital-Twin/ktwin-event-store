@@ -71,32 +71,6 @@ func DeleteTwinInterface(g *gin.Context) {
 	g.JSON(http.StatusOK, "helloworld")
 }
 
-// Get Twin Interface Classes
-// @Summary Get Twin Interface Classes
-// @Schemes
-// @Description This endpoint get the Twin Interface classes.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Helloworld
-// @Router /twin-interfaces/{interfaceId}/classes [get]
-func GetTwinInterfaceClasses(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
-}
-
-// Get Twin Interface Class by Id
-// @Summary Get Twin Interface Class by Id
-// @Schemes
-// @Description This endpoint get the Twin Interface class by Id.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Helloworld
-// @Router /twin-interfaces/{interfaceId}/classes/{classId} [get]
-func GetOneTwinInterfaceClass(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
-}
-
 // Twin Instances
 
 // Get All Twin Instances godoc

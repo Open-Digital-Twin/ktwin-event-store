@@ -1,108 +1,6 @@
 info:
   contact: {}
 paths:
-  /twin-interfaces:
-    get:
-      consumes:
-      - application/json
-      description: This endpoint returns all Twin Interfaces registered in the Platform.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Get All Twin Interfaces
-      tags:
-      - TwinInterface
-    post:
-      consumes:
-      - application/json
-      description: This endpoint creates the Twin Interface.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Create Twin Interface
-      tags:
-      - TwinInterface
-    put:
-      consumes:
-      - application/json
-      description: This endpoint updates the Twin Interface.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Update Twin Interface
-      tags:
-      - TwinInterface
-  /twin-interfaces/{interfaceId}:
-    delete:
-      consumes:
-      - application/json
-      description: This endpoint deletes the Twin Interface.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Delete Twin Interface
-      tags:
-      - TwinInterface
-    get:
-      consumes:
-      - application/json
-      description: This endpoint returns the Twin Interface by id.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Get Twin Interface by Id
-      tags:
-      - TwinInterface
-  /twin-interfaces/{interfaceId}/classes:
-    get:
-      consumes:
-      - application/json
-      description: This endpoint get the Twin Interface classes.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Get Twin Interface Classes
-      tags:
-      - TwinInterface
-  /twin-interfaces/{interfaceId}/classes/{classId}:
-    get:
-      consumes:
-      - application/json
-      description: This endpoint get the Twin Interface class by Id.
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: string
-      summary: Get Twin Interface Class by Id
-      tags:
-      - TwinInterface
   /twin-instances:
     get:
       consumes:
@@ -175,4 +73,76 @@ paths:
       summary: Get One Twin Instance
       tags:
       - TwinInstance
+  /twin-interfaces:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint returns all Twin Interfaces registered in the Platform.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get All Twin Interfaces
+      tags:
+      - TwinInterface
+    post:
+      consumes:
+      - application/json
+      description: This endpoint creates the Twin Interface.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create Twin Interface
+      tags:
+      - TwinInterface
+    put:
+      consumes:
+      - application/json
+      description: This endpoint updates the Twin Interface.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Update Twin Interface
+      tags:
+      - TwinInterface
+  /twin-interfaces/{interfaceId}:
+    delete:
+      consumes:
+      - application/json
+      description: This endpoint deletes the Twin Interface.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete Twin Interface
+      tags:
+      - TwinInterface
+    get:
+      consumes:
+      - application/json
+      description: This endpoint returns the Twin Interface by id.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Interface by Id
+      tags:
+      - TwinInterface
 swagger: "2.0"
