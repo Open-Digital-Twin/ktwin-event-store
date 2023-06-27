@@ -13,10 +13,10 @@ import (
 // @Tags TwinInterface
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [get]
 func GetAllTwinInterfaces(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Get Twin Interface by Id godoc
@@ -26,10 +26,10 @@ func GetAllTwinInterfaces(g *gin.Context) {
 // @Tags TwinInterface
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-interfaces/{interfaceId} [get]
 func GetOneTwinInterfaces(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Create Twin Interface
@@ -39,10 +39,10 @@ func GetOneTwinInterfaces(g *gin.Context) {
 // @Tags TwinInterface
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [post]
 func CreateTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Update Twin Interface
@@ -52,10 +52,10 @@ func CreateTwinInterface(g *gin.Context) {
 // @Tags TwinInterface
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [put]
 func UpdateTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Delete Twin Interface
@@ -65,10 +65,10 @@ func UpdateTwinInterface(g *gin.Context) {
 // @Tags TwinInterface
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-interfaces/{interfaceId} [delete]
 func DeleteTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Twin Instances
@@ -80,10 +80,10 @@ func DeleteTwinInterface(g *gin.Context) {
 // @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-instances [get]
 func GetAllTwinInstances(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Get Twin Instance godoc
@@ -93,10 +93,10 @@ func GetAllTwinInstances(g *gin.Context) {
 // @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId} [get]
 func GetOneTwinInstances(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Create Twin Instance godoc
@@ -106,10 +106,10 @@ func GetOneTwinInstances(g *gin.Context) {
 // @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-instances [post]
 func CreateTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Update Twin Instance godoc
@@ -119,10 +119,10 @@ func CreateTwinInstance(g *gin.Context) {
 // @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-instances [put]
 func UpdateTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
 // Delete Twin Instance godoc
@@ -132,8 +132,8 @@ func UpdateTwinInstance(g *gin.Context) {
 // @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Helloworld
+// @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId} [delete]
 func DeleteTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusOK, "helloworld")
+	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
