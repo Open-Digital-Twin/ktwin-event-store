@@ -1,62 +1,58 @@
--- dt_definition
+-- ktwin
 
-CREATE KEYSPACE dt_definition WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy','DC1' : 3};
+CREATE KEYSPACE ktwin WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy','DC1' : 3};
 
-USE dt_definition;
+USE ktwin;
 
 CREATE TABLE twin_interface (
+id text,
 name text,
-description text, 
 active boolean, 
 parent text,
 data_definition text,
-PRIMARY KEY((name)));
+created_at timestamp,
+PRIMARY KEY((id)));
 
-INSERT INTO twin_interface ("name", "description", "active", "parent", "data_definition") VALUES ('Factory','Factory model', true, '', 'DATA_DEFINITION_FACTORY') ;
-INSERT INTO twin_interface ("name", "description", "active", "parent", "data_definition") VALUES ('Machine','Machine model', true, 'Factory', 'DATA_DEFINITION_MACHINE') ;
-INSERT INTO twin_interface ("name", "description", "active", "parent", "data_definition") VALUES ('Sensor','Sensor model', true, 'Machine', 'DATA_DEFINITION_SENSOR') ;
+INSERT INTO twin_interface ("id", "name", "active", "parent", "data_definition", "created_at") VALUES ('FactoryId', 'Factory', true, '', 'DATA_DEFINITION_FACTORY', toTimestamp(now()));
+INSERT INTO twin_interface ("id", "name", "active", "parent", "data_definition", "created_at") VALUES ('MachineId', 'Machine', true, 'Factory', 'DATA_DEFINITION_MACHINE', toTimestamp(now()));
+INSERT INTO twin_interface ("id", "name", "active", "parent", "data_definition", "created_at") VALUES ('SensorId', 'Sensor', true, 'Machine', 'DATA_DEFINITION_SENSOR', toTimestamp(now()));
 
 CREATE TABLE twin_instance (
+id text,
 name text,
-interface text,
+interface_id text,
 active boolean,
 parent text,
+last_event_data text,
 created_at timestamp,
-PRIMARY KEY((name, interface)));
+PRIMARY KEY((interface_id, id)));
 
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Factory_01', 'Factory', true, '', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Machine_01', 'Machine', true, 'Factory_01', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Machine_02', 'Machine', true, 'Factory_01', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Sensor_01_01', 'Sensor', true, 'Machine_01', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Sensor_01_02', 'Sensor', true, 'Machine_01', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Sensor_02_01', 'Sensor', true, 'Machine_02', toTimestamp(now()));
-INSERT INTO twin_instance ("name", "interface", "active", "parent", "created_at") VALUES ('Sensor_02_02', 'Sensor', true, 'Machine_02', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Factory_01_id', 'Factory_01', 'Factory', true, '', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Machine_01_id', 'Machine_01', 'Machine', true, 'Factory_01', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Machine_02_id', 'Machine_02', 'Machine', true, 'Factory_01', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_01_01_id', 'Sensor_01_01', 'Sensor', true, 'Machine_01', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_01_02_id', 'Sensor_01_02', 'Sensor', true, 'Machine_01', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_02_01_id', 'Sensor_02_01', 'Sensor', true, 'Machine_02', '', toTimestamp(now()));
+INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_02_02_id', 'Sensor_02_02', 'Sensor', true, 'Machine_02', '', toTimestamp(now()));
 
--- dt_event_store
+-- twin_instance_event
 
-CREATE KEYSPACE dt_event_store WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy','DC1' : 3};
-
-USE dt_event_store;
-
-CREATE TABLE event_store_data (
-    intance text,
-    interface text,
-    created_at timestamp,
+CREATE TABLE twin_instance_event (
+    instance_id text,
+    interface_id text,
     event_data text,
-    primary key((intance, interface), created_at)
-)
-WITH CLUSTERING ORDER BY (created_at DESC)
-AND COMPACTION = {'class': 'DateTieredCompactionStrategy',
-    'base_time_seconds': 3600,
-    'max_sstable_age_days': 1};
+    created_at timestamp,
+    primary key((interface_id, instance_id), created_at)
+) WITH CLUSTERING ORDER BY (created_at DESC)
+AND COMPACTION = {'class': 'DateTieredCompactionStrategy', 'base_time_seconds': 3600, 'max_sstable_age_days': 1};
 
 
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_01_01','Sensor', toTimestamp(now()), 'Sensor_01_01_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_01_01','Sensor', toTimestamp(now()), 'Sensor_01_01_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_01_02','Sensor', toTimestamp(now()), 'Sensor_01_02_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_01_02','Sensor', toTimestamp(now()), 'Sensor_01_02_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_02_01','Sensor', toTimestamp(now()), 'Sensor_02_01_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_02_01','Sensor', toTimestamp(now()), 'Sensor_02_01_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_02_02','Sensor', toTimestamp(now()), 'Sensor_02_02_DATA') ;
-INSERT INTO dt_event_store.event_store_data ("intance","interface","created_at","event_data") VALUES ('Sensor_02_02','Sensor', toTimestamp(now()), 'Sensor_02_02_DATA') ;
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));
+INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));
  
