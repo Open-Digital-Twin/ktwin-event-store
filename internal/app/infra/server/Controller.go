@@ -1,61 +1,30 @@
 package server
 
 import (
+	"agwermann/dt-service/internal/app/context/twininstance"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-// Get All Twin Interfaces godoc
-// @Summary Get All Twin Interfaces
-// @Schemes
-// @Description This endpoint returns all Twin Interfaces registered in the Platform.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces [get]
 func GetAllTwinInterfaces(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	container := twininstance.InitializeTwinInstanceContainer()
+	container.Controller.GetAllTwinInterfaces(g)
 }
 
-// Get Twin Interface by Id godoc
-// @Summary Get Twin Interface by Id
-// @Schemes
-// @Description This endpoint returns the Twin Interface by id.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces/{interfaceId} [get]
 func GetOneTwinInterfaces(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	container := twininstance.InitializeTwinInstanceContainer()
+	container.Controller.GetOneTwinInterfaces(g)
 }
 
-// Create Twin Interface
-// @Summary Create Twin Interface
-// @Schemes
-// @Description This endpoint creates the Twin Interface.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces [post]
 func CreateTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	container := twininstance.InitializeTwinInstanceContainer()
+	container.Controller.CreateTwinInterface(g)
 }
 
-// Delete Twin Interface
-// @Summary Delete Twin Interface
-// @Schemes
-// @Description This endpoint deletes the Twin Interface.
-// @Tags TwinInterface
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces/{interfaceId} [delete]
 func DeleteTwinInterface(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	container := twininstance.InitializeTwinInstanceContainer()
+	container.Controller.DeleteTwinInterface(g)
 }
 
 // Twin Instances

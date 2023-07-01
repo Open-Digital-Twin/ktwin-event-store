@@ -8,4 +8,5 @@ swag:
 	swag init
 
 wire:
-	wire ./internal/app
+	wire ./internal/app && \
+	wire ./internal/app/context/...

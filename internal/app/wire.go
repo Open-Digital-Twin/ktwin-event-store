@@ -1,17 +1,17 @@
-//go:build wireinject
-// +build wireinject
+// //go:build wireinject
+// // +build wireinject
 
 package app
 
-import "github.com/google/wire"
+// import "github.com/google/wire"
 
-type AppContainer struct{}
+// type AppContainer struct{}
 
-func NewAppContainer() AppContainer {
-	return AppContainer{}
-}
+// func NewAppContainer() AppContainer {
+// 	return AppContainer{}
+// }
 
-func InitializeAppContainer() AppContainer {
-	wire.Build()
-	return AppContainer{}
-}
+// func InitializeAppContainer() AppContainer {
+// 	wire.Build()
+// 	return AppContainer{}
+// }

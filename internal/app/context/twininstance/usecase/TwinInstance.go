@@ -2,7 +2,7 @@ package usecase
 
 import "time"
 
-type TwinInterface struct {
+type TwinInstance struct {
 	Id             string    `json:"id"`
 	Name           string    `json:"name"`
 	Active         bool      `json:"active"`
