@@ -8,6 +8,7 @@ import (
 	"agwermann/dt-service/internal/app/context/twininstance/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininstance/usecase"
 	"agwermann/dt-service/internal/app/infra/db"
+	"agwermann/dt-service/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )
@@ -37,6 +38,8 @@ func InitializeTwinInstanceContainer() TwinInstanceContainer {
 		usecase.NewTwinInstanceUseCase,
 		repository.NewTwinInstanceRepository,
 		repository.NewTwinInstanceMapper,
+
+		validator.NewValidator,
 		db.NewDBConnection,
 	)
 

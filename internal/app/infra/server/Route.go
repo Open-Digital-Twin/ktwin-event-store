@@ -10,7 +10,7 @@ func ConfigureRoutes(r *gin.Engine) {
 		tc := v1.Group("/twin-interfaces")
 		{
 			tc.GET("", GetAllTwinInterfaces)
-			tc.GET("/", GetOneTwinInterfaces)
+			tc.GET("/:interfaceId", GetOneTwinInterfaces)
 			tc.POST("", CreateTwinInterface)
 			tc.DELETE("", DeleteTwinInterface)
 		}
@@ -18,14 +18,14 @@ func ConfigureRoutes(r *gin.Engine) {
 		ti := v1.Group("/twin-instances")
 		{
 			ti.GET("", GetAllTwinInstances)
-			ti.GET("/", GetOneTwinInstances)
+			ti.GET("/:instanceId", GetOneTwinInstances)
 			ti.POST("", CreateTwinInstance)
 		}
 
 		te := v1.Group("/twin-events")
 		{
 			te.GET("", GetAllTwinInstanceEvents)
-			te.GET("/", GetOneTwinInstancesEvent)
+			te.GET("/:eventId", GetOneTwinInstancesEvent)
 			te.POST("", CreateTwinInstanceEvent)
 			te.DELETE("", DeleteTwinInstanceEvent)
 		}

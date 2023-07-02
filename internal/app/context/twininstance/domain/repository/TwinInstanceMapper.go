@@ -3,7 +3,8 @@ package repository
 import "agwermann/dt-service/internal/app/context/twininstance/domain"
 
 type TwinInstanceMapper interface {
-	ToDomain(twinInstances []TwinInstance) []domain.TwinInstance
+	ToDomainList(twinInstances []TwinInstance) []domain.TwinInstance
+	ToDomain(twinInstances TwinInstance) domain.TwinInstance
 }
 
 type twinInstanceMapper struct {
@@ -13,7 +14,7 @@ func NewTwinInstanceMapper() TwinInstanceMapper {
 	return &twinInstanceMapper{}
 }
 
-func (*twinInstanceMapper) ToDomain(twinInstances []TwinInstance) []domain.TwinInstance {
+func (*twinInstanceMapper) ToDomainList(twinInstances []TwinInstance) []domain.TwinInstance {
 	var twinInstancesDomain []domain.TwinInstance
 
 	for _, twinInstance := range twinInstances {
@@ -21,4 +22,8 @@ func (*twinInstanceMapper) ToDomain(twinInstances []TwinInstance) []domain.TwinI
 	}
 
 	return twinInstancesDomain
+}
+
+func (*twinInstanceMapper) ToDomain(twinInstance TwinInstance) domain.TwinInstance {
+	return domain.TwinInstance(twinInstance)
 }

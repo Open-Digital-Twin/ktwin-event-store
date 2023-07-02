@@ -7,7 +7,8 @@ import (
 )
 
 type DBConnection interface {
-	QueryWithParameters(queryParameters QueryParameters, returnObject interface{}) error
+	GetManyWithParameters(queryParameters QueryParameters, returnObject interface{}) error
+	GetOneWithParameters(queryParameters QueryParameters, returnObject interface{}) error
 	InsertQueryDB(table string, columns []string, insertInterface interface{}) error
 	DeleteTableByColumn(table string, whereConditions []qb.Cmp, deleteInterface interface{}) error
 }
@@ -28,7 +29,7 @@ type dbConnection struct {
 }
 
 // No support for pagination
-func (db *dbConnection) QueryWithParameters(queryParameters QueryParameters, returnObject interface{}) error {
+func (db *dbConnection) GetManyWithParameters(queryParameters QueryParameters, returnObject interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
@@ -45,6 +46,31 @@ func (db *dbConnection) QueryWithParameters(queryParameters QueryParameters, ret
 	}
 
 	err = q.Select(returnObject)
+
+	if err != nil {
+		return err
+	}
+
+	return err
+}
+
+func (db *dbConnection) GetOneWithParameters(queryParameters QueryParameters, returnObject interface{}) error {
+	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+
+	if err != nil {
+		return err
+	}
+
+	query := qb.Select(queryParameters.GetTable())
+	statement, names := query.ToCql()
+
+	q := session.Query(statement, names)
+
+	if queryParameters.GetParametersValues() != nil {
+		q = q.BindMap(queryParameters.GetParametersValues())
+	}
+
+	err = q.Get(returnObject)
 
 	if err != nil {
 		return err

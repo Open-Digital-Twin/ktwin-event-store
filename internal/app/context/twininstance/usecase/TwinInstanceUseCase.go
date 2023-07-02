@@ -15,7 +15,7 @@ func NewTwinInstanceUseCase(
 
 type TwinInstanceUseCase interface {
 	GetAllTwinInterfaces() ([]domain.TwinInstance, error)
-	GetOneTwinInterfaces(id string)
+	GetOneTwinInterface(id string) (domain.TwinInstance, error)
 	DeleteTwinInterface(id string)
 	CreateTwinInterface(twinInterface domain.TwinInstance)
 }
@@ -28,7 +28,9 @@ func (t *twinInstanceUseCase) GetAllTwinInterfaces() ([]domain.TwinInstance, err
 	return t.repository.GetAllTwinInstances()
 }
 
-func (*twinInstanceUseCase) GetOneTwinInterfaces(id string) {}
+func (t *twinInstanceUseCase) GetOneTwinInterface(id string) (domain.TwinInstance, error) {
+	return t.repository.GetTwinInstance(id)
+}
 
 func (*twinInstanceUseCase) DeleteTwinInterface(id string) {}
 

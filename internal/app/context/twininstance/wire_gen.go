@@ -11,6 +11,7 @@ import (
 	"agwermann/dt-service/internal/app/context/twininstance/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininstance/usecase"
 	"agwermann/dt-service/internal/app/infra/db"
+	"agwermann/dt-service/internal/app/infra/validator"
 )
 
 // Injectors from wire.go:
@@ -20,7 +21,8 @@ func InitializeTwinInstanceContainer() TwinInstanceContainer {
 	twinInstanceMapper := repository.NewTwinInstanceMapper()
 	twinInstanceRepository := repository.NewTwinInstanceRepository(dbConnection, twinInstanceMapper)
 	twinInstanceUseCase := usecase.NewTwinInstanceUseCase(twinInstanceRepository)
-	twinInstanceController := controller.NewTwinInstanceController(twinInstanceUseCase)
+	validatorValidator := validator.NewValidator()
+	twinInstanceController := controller.NewTwinInstanceController(twinInstanceUseCase, validatorValidator)
 	twinInstanceContainer := NewTwinInstanceContainer(twinInstanceController, twinInstanceRepository, twinInstanceUseCase)
 	return twinInstanceContainer
 }
