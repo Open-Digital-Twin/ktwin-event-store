@@ -37,8 +37,13 @@ type twinInstanceController struct {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [get]
 func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
-	tc.twinInstanceUseCase.GetAllTwinInterfaces()
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	twinInstance, err := tc.twinInstanceUseCase.GetAllTwinInterfaces()
+
+	if err != nil {
+		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+	} else {
+		g.JSON(http.StatusOK, twinInstance)
+	}
 }
 
 // Get Twin Interface by Id godoc

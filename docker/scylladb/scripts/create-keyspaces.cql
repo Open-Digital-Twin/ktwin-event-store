@@ -1,6 +1,6 @@
 -- ktwin
 
-CREATE KEYSPACE ktwin WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy','DC1' : 3};
+CREATE KEYSPACE ktwin WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
 USE ktwin;
 
@@ -43,8 +43,7 @@ CREATE TABLE twin_instance_event (
     event_data text,
     created_at timestamp,
     primary key((interface_id, instance_id), created_at)
-) WITH CLUSTERING ORDER BY (created_at DESC)
-AND COMPACTION = {'class': 'DateTieredCompactionStrategy', 'base_time_seconds': 3600, 'max_sstable_age_days': 1};
+) WITH CLUSTERING ORDER BY (created_at DESC);
 
 
 INSERT INTO twin_instance_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));

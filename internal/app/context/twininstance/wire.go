@@ -7,6 +7,7 @@ import (
 	"agwermann/dt-service/internal/app/context/twininstance/controller"
 	"agwermann/dt-service/internal/app/context/twininstance/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininstance/usecase"
+	"agwermann/dt-service/internal/app/infra/db"
 
 	"github.com/google/wire"
 )
@@ -35,6 +36,8 @@ func InitializeTwinInstanceContainer() TwinInstanceContainer {
 		controller.NewTwinInstanceController,
 		usecase.NewTwinInstanceUseCase,
 		repository.NewTwinInstanceRepository,
+		repository.NewTwinInstanceMapper,
+		db.NewDBConnection,
 	)
 
 	return TwinInstanceContainer{}
