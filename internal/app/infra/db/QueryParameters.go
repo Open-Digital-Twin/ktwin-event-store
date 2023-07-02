@@ -20,8 +20,9 @@ func NewQueryParameters(
 	parametersValues map[string]interface{},
 ) QueryParameters {
 	return &qParameters{
-		table:           table,
-		whereConditions: whereConditions,
+		table:            table,
+		whereConditions:  whereConditions,
+		parametersValues: parametersValues,
 	}
 }
 

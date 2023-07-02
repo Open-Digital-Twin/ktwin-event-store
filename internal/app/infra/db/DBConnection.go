@@ -61,7 +61,7 @@ func (db *dbConnection) GetOneWithParameters(queryParameters QueryParameters, re
 		return err
 	}
 
-	query := qb.Select(queryParameters.GetTable())
+	query := qb.Select(queryParameters.GetTable()).Where(queryParameters.GetWhereConditions()...).AllowFiltering()
 	statement, names := query.ToCql()
 
 	q := session.Query(statement, names)

@@ -34,7 +34,7 @@ type TwinInstance struct {
 
 type TwinInstanceRepository interface {
 	GetAllTwinInstances() ([]domain.TwinInstance, error)
-	GetTwinInstance(id string) (domain.TwinInstance, error)
+	GetOneTwinInstance(id string) (domain.TwinInstance, error)
 	InsertTwinInstance(twinInstance domain.TwinInstance) error
 	DeleteTwinInstance(id string) error
 }
@@ -57,7 +57,7 @@ func (t *twinInstanceRepository) GetAllTwinInstances() ([]domain.TwinInstance, e
 	return t.mapper.ToDomainList(twinInstances), err
 }
 
-func (t *twinInstanceRepository) GetTwinInstance(id string) (domain.TwinInstance, error) {
+func (t *twinInstanceRepository) GetOneTwinInstance(id string) (domain.TwinInstance, error) {
 	var twinInstance TwinInstance
 
 	whereStatement, parameterValues := t.getOneTwinInstanceWhereClause(id)

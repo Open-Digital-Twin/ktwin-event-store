@@ -29,7 +29,7 @@ func (t *twinInstanceUseCase) GetAllTwinInterfaces() ([]domain.TwinInstance, err
 }
 
 func (t *twinInstanceUseCase) GetOneTwinInterface(id string) (domain.TwinInstance, error) {
-	return t.repository.GetTwinInstance(id)
+	return t.repository.GetOneTwinInstance(id)
 }
 
 func (*twinInstanceUseCase) DeleteTwinInterface(id string) {}
