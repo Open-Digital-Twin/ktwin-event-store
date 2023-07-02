@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"agwermann/dt-service/internal/app/context/twininstance/usecase"
+	"agwermann/dt-service/internal/app/context/twininstance/domain"
 )
 
 func NewTwinInstanceRepository() TwinInstanceRepository {
@@ -10,8 +10,8 @@ func NewTwinInstanceRepository() TwinInstanceRepository {
 
 type TwinInstanceRepository interface {
 	GetAllTwinInstances()
-	GetTwinInstance(id string) usecase.TwinInstance
-	InsertTwinInstance(twinInstance usecase.TwinInstance) error
+	GetTwinInstance(id string) domain.TwinInstance
+	InsertTwinInstance(twinInstance domain.TwinInstance) error
 	DeleteTwinInstance(id string) error
 }
 
@@ -22,11 +22,11 @@ func (*twinInstanceRepository) GetAllTwinInstances() {
 	return
 }
 
-func (*twinInstanceRepository) GetTwinInstance(id string) usecase.TwinInstance {
-	return usecase.TwinInstance{}
+func (*twinInstanceRepository) GetTwinInstance(id string) domain.TwinInstance {
+	return domain.TwinInstance{}
 }
 
-func (*twinInstanceRepository) InsertTwinInstance(twinInstance usecase.TwinInstance) error {
+func (*twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInstance) error {
 	return nil
 }
 

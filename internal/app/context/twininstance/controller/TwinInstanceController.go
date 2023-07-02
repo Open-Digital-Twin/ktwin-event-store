@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"agwermann/dt-service/internal/app/context/twininstance/domain"
 	"agwermann/dt-service/internal/app/context/twininstance/usecase"
 	"net/http"
 
@@ -64,7 +65,7 @@ func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [post]
 func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
-	tc.twinInstanceUseCase.CreateTwinInterface(usecase.TwinInstance{})
+	tc.twinInstanceUseCase.CreateTwinInterface(domain.TwinInstance{})
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
