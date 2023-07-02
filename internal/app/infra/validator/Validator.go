@@ -1,15 +1,23 @@
 package validator
 
+import (
+	v10 "github.com/go-playground/validator/v10"
+)
+
 type Validator interface {
 	ValidateStruct(interface{}) error
 }
 
 func NewValidator() Validator {
-	return &validator{}
+	return &validator{
+		validator: *v10.New(),
+	}
 }
 
-type validator struct{}
+type validator struct {
+	validator v10.Validate
+}
 
-func (*validator) ValidateStruct(interface{}) error {
-	return nil
+func (v *validator) ValidateStruct(obj interface{}) error {
+	return v.validator.Struct(obj)
 }

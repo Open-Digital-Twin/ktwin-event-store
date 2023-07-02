@@ -14,24 +14,26 @@ func NewTwinInstanceUseCase(
 }
 
 type TwinInstanceUseCase interface {
-	GetAllTwinInterfaces() ([]domain.TwinInstance, error)
-	GetOneTwinInterface(id string) (domain.TwinInstance, error)
-	DeleteTwinInterface(id string)
-	CreateTwinInterface(twinInterface domain.TwinInstance)
+	GetAllTwinInstances() ([]domain.TwinInstance, error)
+	GetOneTwinInstance(id string) (domain.TwinInstance, error)
+	DeleteTwinInstance(id string)
+	CreateTwinInstance(twinInterface domain.TwinInstance) error
 }
 
 type twinInstanceUseCase struct {
 	repository repository.TwinInstanceRepository
 }
 
-func (t *twinInstanceUseCase) GetAllTwinInterfaces() ([]domain.TwinInstance, error) {
+func (t *twinInstanceUseCase) GetAllTwinInstances() ([]domain.TwinInstance, error) {
 	return t.repository.GetAllTwinInstances()
 }
 
-func (t *twinInstanceUseCase) GetOneTwinInterface(id string) (domain.TwinInstance, error) {
+func (t *twinInstanceUseCase) GetOneTwinInstance(id string) (domain.TwinInstance, error) {
 	return t.repository.GetOneTwinInstance(id)
 }
 
-func (*twinInstanceUseCase) DeleteTwinInterface(id string) {}
+func (*twinInstanceUseCase) DeleteTwinInstance(id string) {}
 
-func (*twinInstanceUseCase) CreateTwinInterface(twinInterface domain.TwinInstance) {}
+func (t *twinInstanceUseCase) CreateTwinInstance(twinInterface domain.TwinInstance) error {
+	return t.repository.InsertTwinInstance(twinInterface)
+}

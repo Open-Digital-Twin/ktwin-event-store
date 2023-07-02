@@ -83,8 +83,12 @@ func (t *twinInstanceRepository) getOneTwinInstanceWhereClause(id string) ([]qb.
 	return whereStatement, parameterValues
 }
 
-func (*twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInstance) error {
-	return nil
+func (t *twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInstance) error {
+	twinInstanceDB := TwinInstance(twinInstance)
+	twinInstanceDB.CreatedAt = time.Now()
+
+	columns := []string{"id", "name", "interface_id", "active", "parent", "last_event_data", "created_at"}
+	return t.dbConnection.InsertQueryDB(TWIN_INSTANCE_TABLE, columns, twinInstanceDB)
 }
 
 func (*twinInstanceRepository) DeleteTwinInstance(id string) error {

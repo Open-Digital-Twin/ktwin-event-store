@@ -42,7 +42,7 @@ type twinInstanceController struct {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [get]
 func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
-	twinInstances, err := tc.twinInstanceUseCase.GetAllTwinInterfaces()
+	twinInstances, err := tc.twinInstanceUseCase.GetAllTwinInstances()
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
@@ -68,7 +68,7 @@ func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
 		return
 	}
 
-	twinInstance, err := tc.twinInstanceUseCase.GetOneTwinInterface(interfaceId)
+	twinInstance, err := tc.twinInstanceUseCase.GetOneTwinInstance(interfaceId)
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
@@ -90,8 +90,26 @@ func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [post]
 func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
-	tc.twinInstanceUseCase.CreateTwinInterface(domain.TwinInstance{})
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+	var twinInstance domain.TwinInstance
+	err := g.BindJSON(&twinInstance)
+
+	if err != nil {
+		g.JSON(http.StatusBadRequest, "Error: "+err.Error())
+		return
+	}
+
+	if err := tc.validator.ValidateStruct(&twinInstance); err != nil {
+		g.JSON(http.StatusBadRequest, "Validation error: "+err.Error())
+		return
+	}
+
+	err = tc.twinInstanceUseCase.CreateTwinInstance(twinInstance)
+
+	if err != nil {
+		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+	} else {
+		g.JSON(http.StatusAccepted, "")
+	}
 }
 
 // Delete Twin Interface
@@ -104,6 +122,6 @@ func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces/{interfaceId} [delete]
 func (tc *twinInstanceController) DeleteTwinInterface(g *gin.Context) {
-	tc.twinInstanceUseCase.DeleteTwinInterface("")
+	tc.twinInstanceUseCase.DeleteTwinInstance("")
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
