@@ -8,7 +8,7 @@ package twininstance
 
 import (
 	"agwermann/dt-service/internal/app/context/twininstance/controller"
-	"agwermann/dt-service/internal/app/context/twininstance/repository"
+	"agwermann/dt-service/internal/app/context/twininstance/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininstance/usecase"
 )
 

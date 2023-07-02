@@ -36,6 +36,7 @@ type twinInstanceController struct {
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [get]
 func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
+	tc.twinInstanceUseCase.GetAllTwinInterfaces()
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
@@ -48,7 +49,8 @@ func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces/{interfaceId} [get]
-func (*twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
+func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
+	tc.twinInstanceUseCase.GetOneTwinInterfaces("")
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
@@ -61,7 +63,8 @@ func (*twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces [post]
-func (*twinInstanceController) CreateTwinInterface(g *gin.Context) {
+func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
+	tc.twinInstanceUseCase.CreateTwinInterface(usecase.TwinInstance{})
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
 
@@ -74,6 +77,7 @@ func (*twinInstanceController) CreateTwinInterface(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-interfaces/{interfaceId} [delete]
-func (*twinInstanceController) DeleteTwinInterface(g *gin.Context) {
+func (tc *twinInstanceController) DeleteTwinInterface(g *gin.Context) {
+	tc.twinInstanceUseCase.DeleteTwinInterface("")
 	g.JSON(http.StatusNotImplemented, "Not Implemented")
 }
