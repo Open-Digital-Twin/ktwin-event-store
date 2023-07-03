@@ -21,10 +21,10 @@ func NewTwinInstanceController(
 }
 
 type TwinInstanceController interface {
-	GetAllTwinInterfaces(g *gin.Context)
-	GetOneTwinInterfaces(g *gin.Context)
-	DeleteTwinInterface(g *gin.Context)
-	CreateTwinInterface(g *gin.Context)
+	GetAllTwinInstances(g *gin.Context)
+	GetOneTwinInstance(g *gin.Context)
+	DeleteTwinInstance(g *gin.Context)
+	CreateTwinInstance(g *gin.Context)
 }
 
 type twinInstanceController struct {
@@ -32,16 +32,16 @@ type twinInstanceController struct {
 	validator           validator.Validator
 }
 
-// Get All Twin Interfaces godoc
-// @Summary Get All Twin Interfaces
+// Get All Twin Instances godoc
+// @Summary Get All Twin Instances
 // @Schemes
-// @Description This endpoint returns all Twin Interfaces registered in the Platform.
-// @Tags TwinInterface
+// @Description This endpoint returns all Twin Instances registered in the Platform.
+// @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces [get]
-func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
+// @Success 200 {object} []domain.TwinInstance
+// @Router /twin-instances [get]
+func (tc *twinInstanceController) GetAllTwinInstances(g *gin.Context) {
 	twinInstances, err := tc.twinInstanceUseCase.GetAllTwinInstances()
 
 	if err != nil {
@@ -51,24 +51,25 @@ func (tc *twinInstanceController) GetAllTwinInterfaces(g *gin.Context) {
 	}
 }
 
-// Get Twin Interface by Id godoc
-// @Summary Get Twin Interface by Id
+// Get Twin Instance by Id godoc
+// @Summary Get Twin Instance by Id
 // @Schemes
-// @Description This endpoint returns the Twin Interface by id.
-// @Tags TwinInterface
+// @Description This endpoint returns the Twin Instance by id.
+// @Tags TwinInstance
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-interfaces/{interfaceId} [get]
-func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
-	interfaceId, exists := g.Params.Get("interfaceId")
+// @Success 200 {JSON}
+// @Router /twin-instances/{instanceId}/{id} [get]
+func (tc *twinInstanceController) GetOneTwinInstance(g *gin.Context) {
+	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
+	id, hasId := g.Params.Get("id")
 
-	if !exists {
-		g.JSON(http.StatusBadRequest, "Missing interfaceId")
+	if !hasInterfaceId && !hasId {
+		g.JSON(http.StatusBadRequest, "Missing interfaceId or id")
 		return
 	}
 
-	twinInstance, err := tc.twinInstanceUseCase.GetOneTwinInstance(interfaceId)
+	twinInstance, err := tc.twinInstanceUseCase.GetOneTwinInstance(interfaceId, id)
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
@@ -80,16 +81,16 @@ func (tc *twinInstanceController) GetOneTwinInterfaces(g *gin.Context) {
 	}
 }
 
-// Create Twin Interface
-// @Summary Create Twin Interface
+// Create Twin Instance
+// @Summary Create Twin Instance
 // @Schemes
-// @Description This endpoint creates the Twin Interface.
-// @Tags TwinInterface
+// @Description This endpoint creates the Twin Instance.
+// @Tags TwinInstance
 // @Accept json
 // @Produce json
 // @Success 200 {string} Not Implemented
-// @Router /twin-interfaces [post]
-func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
+// @Router /twin-Instances [post]
+func (tc *twinInstanceController) CreateTwinInstance(g *gin.Context) {
 	var twinInstance domain.TwinInstance
 	err := g.BindJSON(&twinInstance)
 
@@ -112,16 +113,29 @@ func (tc *twinInstanceController) CreateTwinInterface(g *gin.Context) {
 	}
 }
 
-// Delete Twin Interface
-// @Summary Delete Twin Interface
+// Delete Twin Instance
+// @Summary Delete Twin Instance
 // @Schemes
-// @Description This endpoint deletes the Twin Interface.
-// @Tags TwinInterface
+// @Description This endpoint deletes the Twin Instance.
+// @Tags TwinInstance
 // @Accept json
 // @Produce json
 // @Success 200 {string} Not Implemented
-// @Router /twin-interfaces/{interfaceId} [delete]
-func (tc *twinInstanceController) DeleteTwinInterface(g *gin.Context) {
-	tc.twinInstanceUseCase.DeleteTwinInstance("")
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// @Router /twin-Instances/{instanceId} [delete]
+func (tc *twinInstanceController) DeleteTwinInstance(g *gin.Context) {
+	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
+	id, hasId := g.Params.Get("id")
+
+	if !hasInterfaceId && !hasId {
+		g.JSON(http.StatusBadRequest, "Missing interfaceId or id")
+		return
+	}
+
+	err := tc.twinInstanceUseCase.DeleteTwinInstance(interfaceId, id)
+
+	if err != nil {
+		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+	} else {
+		g.JSON(http.StatusOK, "")
+	}
 }

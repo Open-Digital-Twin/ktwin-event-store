@@ -1,39 +1,34 @@
 package db
 
-import "github.com/scylladb/gocqlx/v2/qb"
+import (
+	"github.com/scylladb/gocqlx/v2/qb"
+	"github.com/scylladb/gocqlx/v2/table"
+)
 
 type QueryParameters interface {
-	GetTable() string
-	GetWhereConditions() []qb.Cmp
-	GetParametersValues() map[string]interface{}
+	GetTable() *table.Table
+	GetParametersValues() qb.M
 }
 
 type qParameters struct {
-	table            string
-	whereConditions  []qb.Cmp
-	parametersValues map[string]interface{}
+	table            *table.Table
+	parametersValues qb.M
 }
 
 func NewQueryParameters(
-	table string,
-	whereConditions []qb.Cmp,
-	parametersValues map[string]interface{},
+	table *table.Table,
+	parametersValues qb.M,
 ) QueryParameters {
 	return &qParameters{
 		table:            table,
-		whereConditions:  whereConditions,
 		parametersValues: parametersValues,
 	}
 }
 
-func (q *qParameters) GetTable() string {
+func (q *qParameters) GetTable() *table.Table {
 	return q.table
 }
 
-func (q *qParameters) GetWhereConditions() []qb.Cmp {
-	return q.whereConditions
-}
-
-func (q *qParameters) GetParametersValues() map[string]interface{} {
+func (q *qParameters) GetParametersValues() qb.M {
 	return q.parametersValues
 }

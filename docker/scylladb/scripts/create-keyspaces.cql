@@ -4,6 +4,7 @@ CREATE KEYSPACE ktwin WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replicat
 
 USE ktwin;
 
+-- TODO: review primary key
 CREATE TABLE twin_interface (
 id text,
 name text,
@@ -38,11 +39,11 @@ INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "la
 -- twin_instance_event
 
 CREATE TABLE twin_instance_event (
-    instance_id text,
-    interface_id text,
-    event_data text,
-    created_at timestamp,
-    primary key((interface_id, instance_id), created_at)
+instance_id text,
+interface_id text,
+event_data text,
+created_at timestamp,
+primary key((interface_id, instance_id))
 ) WITH CLUSTERING ORDER BY (created_at DESC);
 
 

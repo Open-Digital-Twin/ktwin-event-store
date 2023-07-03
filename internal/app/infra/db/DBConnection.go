@@ -4,13 +4,14 @@ import (
 	"github.com/gocql/gocql"
 	"github.com/scylladb/gocqlx/v2"
 	"github.com/scylladb/gocqlx/v2/qb"
+	"github.com/scylladb/gocqlx/v2/table"
 )
 
 type DBConnection interface {
-	GetManyWithParameters(queryParameters QueryParameters, returnObject interface{}) error
-	GetOneWithParameters(queryParameters QueryParameters, returnObject interface{}) error
-	InsertQueryDB(table string, columns []string, insertInterface interface{}) error
-	DeleteTableByColumn(table string, whereConditions []qb.Cmp, deleteInterface interface{}) error
+	GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
+	GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
+	InsertQueryDB(table *table.Table, columns []string, insertInterface interface{}) error
+	DeleteQuery(table *table.Table, conditions qb.M) error
 }
 
 func NewDBConnection() DBConnection {
@@ -29,84 +30,64 @@ type dbConnection struct {
 }
 
 // No support for pagination
-func (db *dbConnection) GetManyWithParameters(queryParameters QueryParameters, returnObject interface{}) error {
+func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
 		return err
 	}
 
-	query := qb.Select(queryParameters.GetTable())
-	statement, names := query.ToCql()
+	q := session.Query(table.SelectAll()).BindMap(conditions)
 
-	q := session.Query(statement, names)
-
-	if queryParameters.GetParametersValues() != nil {
-		q = q.BindMap(queryParameters.GetParametersValues())
-	}
-
-	err = q.Select(returnObject)
-
-	if err != nil {
+	if err := q.SelectRelease(returnObject); err != nil {
 		return err
 	}
 
 	return err
 }
 
-func (db *dbConnection) GetOneWithParameters(queryParameters QueryParameters, returnObject interface{}) error {
+func (db *dbConnection) GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
 		return err
 	}
 
-	query := qb.Select(queryParameters.GetTable()).Where(queryParameters.GetWhereConditions()...).AllowFiltering()
-	statement, names := query.ToCql()
+	q := session.Query(table.Get()).BindMap(conditions)
 
-	q := session.Query(statement, names)
-
-	if queryParameters.GetParametersValues() != nil {
-		q = q.BindMap(queryParameters.GetParametersValues())
-	}
-
-	err = q.Get(returnObject)
-
-	if err != nil {
+	if err := q.GetRelease(returnObject); err != nil {
 		return err
 	}
 
 	return err
 }
 
-func (db *dbConnection) InsertQueryDB(table string, columns []string, insertInterface interface{}) error {
+func (db *dbConnection) InsertQueryDB(table *table.Table, columns []string, insertInterface interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
 		return err
 	}
 
-	insertQuery := qb.Insert(table).Columns(columns...).Query(session)
-	insertQuery.BindStruct(insertInterface)
+	q := session.Query(table.Insert()).BindStruct(insertInterface)
 
-	if err := insertQuery.ExecRelease(); err != nil {
+	if err := q.ExecRelease(); err != nil {
 		return err
 	}
 
 	return err
 }
 
-func (db *dbConnection) DeleteTableByColumn(table string, whereConditions []qb.Cmp, deleteInterface interface{}) error {
+func (db *dbConnection) DeleteQuery(table *table.Table, conditions qb.M) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
 		return err
 	}
 
-	deleteQuery := qb.Delete(table).Where(whereConditions...).Query(session)
-	deleteQuery.BindStruct(deleteInterface)
+	q := session.Query(table.Delete()).BindMap(conditions)
 
-	if err := deleteQuery.ExecRelease(); err != nil {
+	if err := q.ExecRelease(); err != nil {
 		return err
 	}
 

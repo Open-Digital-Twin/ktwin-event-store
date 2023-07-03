@@ -2,29 +2,30 @@ package server
 
 import (
 	"agwermann/dt-service/internal/app/context/twininstance"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func GetAllTwinInterfaces(g *gin.Context) {
+// Twin Instances
+
+func GetAllTwinInstances(g *gin.Context) {
 	container := twininstance.InitializeTwinInstanceContainer()
-	container.Controller.GetAllTwinInterfaces(g)
+	container.Controller.GetAllTwinInstances(g)
 }
 
-func GetOneTwinInterfaces(g *gin.Context) {
+func GetOneTwinInstance(g *gin.Context) {
 	container := twininstance.InitializeTwinInstanceContainer()
-	container.Controller.GetOneTwinInterfaces(g)
+	container.Controller.GetOneTwinInstance(g)
 }
 
-func CreateTwinInterface(g *gin.Context) {
+func CreateTwinInstance(g *gin.Context) {
 	container := twininstance.InitializeTwinInstanceContainer()
-	container.Controller.CreateTwinInterface(g)
+	container.Controller.CreateTwinInstance(g)
 }
 
-func DeleteTwinInterface(g *gin.Context) {
+func DeleteTwinInstance(g *gin.Context) {
 	container := twininstance.InitializeTwinInstanceContainer()
-	container.Controller.DeleteTwinInterface(g)
+	container.Controller.DeleteTwinInstance(g)
 }
 
 // Twin Instances
@@ -38,9 +39,9 @@ func DeleteTwinInterface(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances [get]
-func GetAllTwinInstances(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func GetAllTwinInstances(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Get Twin Instance godoc
 // @Summary Get One Twin Instance
@@ -51,9 +52,9 @@ func GetAllTwinInstances(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId} [get]
-func GetOneTwinInstances(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func GetOneTwinInstances(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Create Twin Instance godoc
 // @Summary Create Twin Instance
@@ -64,9 +65,9 @@ func GetOneTwinInstances(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances [post]
-func CreateTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func CreateTwinInstance(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Delete Twin Instance godoc
 // @Summary Delete Twin Instance
@@ -77,9 +78,9 @@ func CreateTwinInstance(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId} [delete]
-func DeleteTwinInstance(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func DeleteTwinInstance(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Twin Instance Events
 
@@ -92,9 +93,9 @@ func DeleteTwinInstance(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId}/events [get]
-func GetAllTwinInstanceEvents(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func GetAllTwinInstanceEvents(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Get Twin Instance godoc
 // @Summary Get One Twin Instance Event
@@ -105,9 +106,9 @@ func GetAllTwinInstanceEvents(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId}/events/{eventId} [get]
-func GetOneTwinInstancesEvent(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func GetOneTwinInstancesEvent(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Create Twin Instance godoc
 // @Summary Create Twin Instance Event
@@ -118,9 +119,9 @@ func GetOneTwinInstancesEvent(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId}/events [post]
-func CreateTwinInstanceEvent(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func CreateTwinInstanceEvent(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }
 
 // Delete Twin Instance godoc
 // @Summary Delete Twin Instance Event
@@ -131,6 +132,6 @@ func CreateTwinInstanceEvent(g *gin.Context) {
 // @Produce json
 // @Success 200 {string} Not Implemented
 // @Router /twin-instances/{instanceId}/events/{eventId} [delete]
-func DeleteTwinInstanceEvent(g *gin.Context) {
-	g.JSON(http.StatusNotImplemented, "Not Implemented")
-}
+// func DeleteTwinInstanceEvent(g *gin.Context) {
+// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
+// }

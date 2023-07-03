@@ -6,21 +6,17 @@ import (
 	"time"
 
 	"github.com/scylladb/gocqlx/v2/qb"
+	"github.com/scylladb/gocqlx/v2/table"
 )
 
-const (
-	TWIN_INSTANCE_TABLE = "twin_instance"
-)
-
-func NewTwinInstanceRepository(
-	dbConnection db.DBConnection,
-	mapper TwinInstanceMapper,
-) TwinInstanceRepository {
-	return &twinInstanceRepository{
-		dbConnection: dbConnection,
-		mapper:       mapper,
-	}
+var TWIN_INSTANCE_METADATA = table.Metadata{
+	Name:    "twin_instance",
+	Columns: []string{"id", "name", "interface_id", "active", "parent", "last_event_data", "created_at"},
+	PartKey: []string{"interface_id", "id"},
+	SortKey: []string{},
 }
+
+var TWIN_INSTANCE_TABLE = table.New(TWIN_INSTANCE_METADATA)
 
 type TwinInstance struct {
 	Id            string    `db:"id"`
@@ -32,11 +28,21 @@ type TwinInstance struct {
 	CreatedAt     time.Time `db:"created_at"`
 }
 
+func NewTwinInstanceRepository(
+	dbConnection db.DBConnection,
+	mapper TwinInstanceMapper,
+) TwinInstanceRepository {
+	return &twinInstanceRepository{
+		dbConnection: dbConnection,
+		mapper:       mapper,
+	}
+}
+
 type TwinInstanceRepository interface {
 	GetAllTwinInstances() ([]domain.TwinInstance, error)
-	GetOneTwinInstance(id string) (domain.TwinInstance, error)
+	GetOneTwinInstance(interfaceId string, id string) (domain.TwinInstance, error)
 	InsertTwinInstance(twinInstance domain.TwinInstance) error
-	DeleteTwinInstance(id string) error
+	DeleteTwinInstance(interfaceId string, id string) error
 }
 
 type twinInstanceRepository struct {
@@ -47,8 +53,7 @@ type twinInstanceRepository struct {
 func (t *twinInstanceRepository) GetAllTwinInstances() ([]domain.TwinInstance, error) {
 	var twinInstances []TwinInstance
 
-	queryParameters := db.NewQueryParameters(TWIN_INSTANCE_TABLE, nil, nil)
-	err := t.dbConnection.GetManyWithParameters(queryParameters, &twinInstances)
+	err := t.dbConnection.GetManyWithParameters(TWIN_INSTANCE_TABLE, qb.M{}, &twinInstances)
 
 	if err != nil {
 		return []domain.TwinInstance{}, err
@@ -57,30 +62,16 @@ func (t *twinInstanceRepository) GetAllTwinInstances() ([]domain.TwinInstance, e
 	return t.mapper.ToDomainList(twinInstances), err
 }
 
-func (t *twinInstanceRepository) GetOneTwinInstance(id string) (domain.TwinInstance, error) {
+func (t *twinInstanceRepository) GetOneTwinInstance(interfaceId string, id string) (domain.TwinInstance, error) {
 	var twinInstance TwinInstance
 
-	whereStatement, parameterValues := t.getOneTwinInstanceWhereClause(id)
-	queryParameters := db.NewQueryParameters(TWIN_INSTANCE_TABLE, whereStatement, parameterValues)
-	err := t.dbConnection.GetOneWithParameters(queryParameters, &twinInstance)
+	err := t.dbConnection.GetOneWithParameters(TWIN_INSTANCE_TABLE, t.getConditions(interfaceId, id), &twinInstance)
 
 	if err != nil {
 		return domain.TwinInstance{}, err
 	}
 
 	return t.mapper.ToDomain(twinInstance), err
-}
-
-func (t *twinInstanceRepository) getOneTwinInstanceWhereClause(id string) ([]qb.Cmp, map[string]interface{}) {
-	whereStatement := []qb.Cmp{}
-	parameterValues := make(map[string]interface{}, 10)
-
-	if id != "" {
-		whereStatement = append(whereStatement, qb.Eq("id"))
-		parameterValues["id"] = id
-	}
-
-	return whereStatement, parameterValues
 }
 
 func (t *twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInstance) error {
@@ -91,6 +82,10 @@ func (t *twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInst
 	return t.dbConnection.InsertQueryDB(TWIN_INSTANCE_TABLE, columns, twinInstanceDB)
 }
 
-func (*twinInstanceRepository) DeleteTwinInstance(id string) error {
-	return nil
+func (t *twinInstanceRepository) DeleteTwinInstance(interfaceId string, id string) error {
+	return t.dbConnection.DeleteQuery(TWIN_INSTANCE_TABLE, t.getConditions(interfaceId, id))
+}
+
+func (t *twinInstanceRepository) getConditions(interfaceId string, id string) qb.M {
+	return qb.M{"interface_id": interfaceId, "id": id}
 }
