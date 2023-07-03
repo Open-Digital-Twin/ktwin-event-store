@@ -16,30 +16,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/twin-instances": {
-            "get": {
-                "description": "do ping",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInstance"
-                ],
-                "summary": "Get All Twin Instances",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
+        "/twin-Instances": {
             "post": {
-                "description": "This endpoint creates a Twin Instance.",
+                "description": "This endpoint creates the Twin Instance.",
                 "consumes": [
                     "application/json"
                 ],
@@ -47,41 +26,20 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinInstance"
+                    "TwinInstances"
                 ],
                 "summary": "Create Twin Instance",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/domain.TwinInstance"
                         }
                     }
                 }
             }
         },
-        "/twin-instances/{instanceId}": {
-            "get": {
-                "description": "do ping",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInstance"
-                ],
-                "summary": "Get One Twin Instance",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
+        "/twin-Instances/{instanceId}": {
             "delete": {
                 "description": "This endpoint deletes the Twin Instance.",
                 "consumes": [
@@ -91,22 +49,22 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinInstance"
+                    "TwinInstances"
                 ],
                 "summary": "Delete Twin Instance",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/domain.TwinInstance"
                         }
                     }
                 }
             }
         },
-        "/twin-instances/{instanceId}/events": {
+        "/twin-instances": {
             "get": {
-                "description": "do ping",
+                "description": "This endpoint returns all Twin Instances registered in the Platform.",
                 "consumes": [
                     "application/json"
                 ],
@@ -114,43 +72,25 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinInstanceEvents"
+                    "TwinInstances"
                 ],
-                "summary": "Get All Twin Instances Events",
+                "summary": "Get All Twin Instances",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "This endpoint populates a Twin Instance Event.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInstanceEvents"
-                ],
-                "summary": "Create Twin Instance Event",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/domain.TwinInstance"
+                            }
                         }
                     }
                 }
             }
         },
-        "/twin-instances/{instanceId}/events/{eventId}": {
+        "/twin-instances/{instanceId}/{id}": {
             "get": {
-                "description": "do ping",
+                "description": "This endpoint returns the Twin Instance by id.",
                 "consumes": [
                     "application/json"
                 ],
@@ -158,125 +98,49 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "TwinInstanceEvents"
+                    "TwinInstances"
                 ],
-                "summary": "Get One Twin Instance Event",
+                "summary": "Get Twin Instance by Id",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "This endpoint deletes the Twin Instance Event.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInstanceEvents"
-                ],
-                "summary": "Delete Twin Instance Event",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/domain.TwinInstance"
                         }
                     }
                 }
             }
-        },
-        "/twin-interfaces": {
-            "get": {
-                "description": "This endpoint returns all Twin Interfaces registered in the Platform.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get All Twin Interfaces",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "This endpoint creates the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Create Twin Interface",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/twin-interfaces/{interfaceId}": {
-            "get": {
-                "description": "This endpoint returns the Twin Interface by id.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Get Twin Interface by Id",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "description": "This endpoint deletes the Twin Interface.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "TwinInterface"
-                ],
-                "summary": "Delete Twin Interface",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
+        }
+    },
+    "definitions": {
+        "domain.TwinInstance": {
+            "type": "object",
+            "required": [
+                "id",
+                "interfaceId",
+                "name"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "interfaceId": {
+                    "type": "string"
+                },
+                "lastEventData": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent": {
+                    "type": "string"
                 }
             }
         }
@@ -293,6 +157,8 @@ var SwaggerInfo = &swag.Spec{
 	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
+	LeftDelim:        "{{",
+	RightDelim:       "}}",
 }
 
 func init() {

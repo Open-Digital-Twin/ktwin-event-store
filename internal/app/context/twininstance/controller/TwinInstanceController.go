@@ -36,7 +36,7 @@ type twinInstanceController struct {
 // @Summary Get All Twin Instances
 // @Schemes
 // @Description This endpoint returns all Twin Instances registered in the Platform.
-// @Tags TwinInstance
+// @Tags TwinInstances
 // @Accept json
 // @Produce json
 // @Success 200 {object} []domain.TwinInstance
@@ -55,10 +55,10 @@ func (tc *twinInstanceController) GetAllTwinInstances(g *gin.Context) {
 // @Summary Get Twin Instance by Id
 // @Schemes
 // @Description This endpoint returns the Twin Instance by id.
-// @Tags TwinInstance
+// @Tags TwinInstances
 // @Accept json
 // @Produce json
-// @Success 200 {JSON}
+// @Success 200 {object} domain.TwinInstance
 // @Router /twin-instances/{instanceId}/{id} [get]
 func (tc *twinInstanceController) GetOneTwinInstance(g *gin.Context) {
 	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
@@ -85,10 +85,10 @@ func (tc *twinInstanceController) GetOneTwinInstance(g *gin.Context) {
 // @Summary Create Twin Instance
 // @Schemes
 // @Description This endpoint creates the Twin Instance.
-// @Tags TwinInstance
+// @Tags TwinInstances
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200 {object} domain.TwinInstance
 // @Router /twin-Instances [post]
 func (tc *twinInstanceController) CreateTwinInstance(g *gin.Context) {
 	var twinInstance domain.TwinInstance
@@ -117,10 +117,10 @@ func (tc *twinInstanceController) CreateTwinInstance(g *gin.Context) {
 // @Summary Delete Twin Instance
 // @Schemes
 // @Description This endpoint deletes the Twin Instance.
-// @Tags TwinInstance
+// @Tags TwinInstances
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200 {object} domain.TwinInstance
 // @Router /twin-Instances/{instanceId} [delete]
 func (tc *twinInstanceController) DeleteTwinInstance(g *gin.Context) {
 	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
