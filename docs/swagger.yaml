@@ -68,6 +68,64 @@ paths:
       summary: Delete Twin Instance
       tags:
       - TwinInstances
+  /twin-events:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Events
+      tags:
+      - TwinEvents
+    post:
+      consumes:
+      - application/json
+      description: This endpoint populates a Twin Event Event.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Create Twin Event
+      tags:
+      - TwinEvents
+  /twin-events/{interfaceId}/{instanceId}:
+    delete:
+      consumes:
+      - application/json
+      description: This endpoint deletes the Twin Event Event.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Delete Twin Event Event
+      tags:
+      - TwinEvents
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get Twin Events
+      tags:
+      - TwinEvents
   /twin-instances:
     get:
       consumes:
