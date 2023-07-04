@@ -10,13 +10,16 @@ import (
 	"agwermann/dt-service/internal/app/context/twininterface/controller"
 	"agwermann/dt-service/internal/app/context/twininterface/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininterface/usecase"
+	"agwermann/dt-service/internal/app/infra/db"
 	"agwermann/dt-service/internal/app/infra/validator"
 )
 
 // Injectors from wire.go:
 
 func InitializeTwinInterfaceContainer() TwinInterfaceContainer {
-	twinInterfaceRepository := repository.NewTwinInterfaceRepository()
+	dbConnection := db.NewDBConnection()
+	twinInterfaceMapper := repository.NewTwinInterfaceMapper()
+	twinInterfaceRepository := repository.NewTwinInterfaceRepository(dbConnection, twinInterfaceMapper)
 	twinInterfaceUseCase := usecase.NewTwinInterfaceUseCase(twinInterfaceRepository)
 	validatorValidator := validator.NewValidator()
 	twinInterfaceController := controller.NewTwinInterfaceController(twinInterfaceUseCase, validatorValidator)

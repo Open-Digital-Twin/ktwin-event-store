@@ -2,21 +2,11 @@ package repository
 
 import (
 	"agwermann/dt-service/internal/app/context/twininterface/domain"
-	"time"
 )
 
 type TwinInterfaceMapper interface {
 	ToDomainList(twinInterfaces []TwinInterface) []domain.TwinInterface
 	ToDomain(twinInterfaces TwinInterface) domain.TwinInterface
-}
-
-type TwinInterface struct {
-	Id             string    `db:"id"`
-	Name           string    `db:"name"`
-	Active         bool      `db:"active"`
-	Parent         string    `db:"parent"`
-	DataDefinition string    `db:"data_definition"`
-	CreatedAt      time.Time `db:"created_at"`
 }
 
 type twinInstanceMapper struct {

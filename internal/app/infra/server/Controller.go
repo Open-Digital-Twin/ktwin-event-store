@@ -14,17 +14,17 @@ func GetAllTwinInterfaces(g *gin.Context) {
 	container.Controller.GetAllTwinInterfaces(g)
 }
 
-func GetOneTwinInterfaces(g *gin.Context) {
+func GetOneTwinInterface(g *gin.Context) {
 	container := twininterface.InitializeTwinInterfaceContainer()
-	container.Controller.GetAllTwinInterfaces(g)
+	container.Controller.GetOneTwinInterface(g)
 }
 
-func CreateTwinInterfaces(g *gin.Context) {
+func CreateTwinInterface(g *gin.Context) {
 	container := twininterface.InitializeTwinInterfaceContainer()
 	container.Controller.CreateTwinInterface(g)
 }
 
-func DeleteTwinInterfaces(g *gin.Context) {
+func DeleteTwinInterface(g *gin.Context) {
 	container := twininterface.InitializeTwinInterfaceContainer()
 	container.Controller.DeleteTwinInterface(g)
 }

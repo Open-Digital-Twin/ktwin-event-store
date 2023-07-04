@@ -78,8 +78,7 @@ func (t *twinInstanceRepository) InsertTwinInstance(twinInstance domain.TwinInst
 	twinInstanceDB := TwinInstance(twinInstance)
 	twinInstanceDB.CreatedAt = time.Now()
 
-	columns := []string{"id", "name", "interface_id", "active", "parent", "last_event_data", "created_at"}
-	return t.dbConnection.InsertQueryDB(TWIN_INSTANCE_TABLE, columns, twinInstanceDB)
+	return t.dbConnection.InsertQueryDB(TWIN_INSTANCE_TABLE, twinInstanceDB)
 }
 
 func (t *twinInstanceRepository) DeleteTwinInstance(interfaceId string, id string) error {

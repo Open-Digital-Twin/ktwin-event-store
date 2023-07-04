@@ -7,13 +7,13 @@ import (
 func ConfigureRoutes(r *gin.Engine) {
 	v1 := r.Group("/api/v1")
 	{
-		// tc := v1.Group("/twin-interfaces")
-		// {
-		// 	tc.GET("", GetAllTwinInterfaces)
-		// 	tc.GET("/:interfaceId", GetOneTwinInterfaces)
-		// 	tc.POST("", CreateTwinInterface)
-		// 	tc.DELETE("/:interfaceId", DeleteTwinInterface)
-		// }
+		tc := v1.Group("/twin-interfaces")
+		{
+			tc.GET("", GetAllTwinInterfaces)
+			tc.GET("/:id", GetOneTwinInterface)
+			tc.POST("", CreateTwinInterface)
+			tc.DELETE("/:id", DeleteTwinInterface)
+		}
 
 		ti := v1.Group("/twin-instances")
 		{

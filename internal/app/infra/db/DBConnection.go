@@ -10,7 +10,7 @@ import (
 type DBConnection interface {
 	GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
 	GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
-	InsertQueryDB(table *table.Table, columns []string, insertInterface interface{}) error
+	InsertQueryDB(table *table.Table, insertInterface interface{}) error
 	DeleteQuery(table *table.Table, conditions qb.M) error
 }
 
@@ -62,7 +62,7 @@ func (db *dbConnection) GetOneWithParameters(table *table.Table, conditions qb.M
 	return err
 }
 
-func (db *dbConnection) InsertQueryDB(table *table.Table, columns []string, insertInterface interface{}) error {
+func (db *dbConnection) InsertQueryDB(table *table.Table, insertInterface interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {

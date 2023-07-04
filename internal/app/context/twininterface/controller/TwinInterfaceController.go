@@ -21,7 +21,10 @@ func NewTwinInterfaceController(
 	twinInterfaceUseCase usecase.TwinInterfaceUseCase,
 	validator validator.Validator,
 ) TwinInterfaceController {
-	return &twinInterfaceController{}
+	return &twinInterfaceController{
+		twinInterfaceUseCase: twinInterfaceUseCase,
+		validator:            validator,
+	}
 }
 
 type twinInterfaceController struct {

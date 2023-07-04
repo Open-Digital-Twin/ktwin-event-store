@@ -7,6 +7,7 @@ import (
 	"agwermann/dt-service/internal/app/context/twininterface/controller"
 	"agwermann/dt-service/internal/app/context/twininterface/domain/repository"
 	"agwermann/dt-service/internal/app/context/twininterface/usecase"
+	"agwermann/dt-service/internal/app/infra/db"
 	"agwermann/dt-service/internal/app/infra/validator"
 
 	"github.com/google/wire"
@@ -36,10 +37,10 @@ func InitializeTwinInterfaceContainer() TwinInterfaceContainer {
 		controller.NewTwinInterfaceController,
 		usecase.NewTwinInterfaceUseCase,
 		repository.NewTwinInterfaceRepository,
-		// repository.NewTwinInterfaceMapper,
+		repository.NewTwinInterfaceMapper,
 
 		validator.NewValidator,
-		// db.NewDBConnection,
+		db.NewDBConnection,
 	)
 
 	return TwinInterfaceContainer{}
