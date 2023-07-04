@@ -23,12 +23,12 @@ func ConfigureRoutes(r *gin.Engine) {
 			ti.DELETE("/:interfaceId/:id", DeleteTwinInstance)
 		}
 
-		// te := v1.Group("/twin-events")
-		// {
-		// 	te.GET("", GetAllTwinInstanceEvents)
-		// 	te.GET("/:eventId", GetOneTwinInstancesEvent)
-		// 	te.POST("", CreateTwinInstanceEvent)
-		// 	te.DELETE("", DeleteTwinInstanceEvent)
-		// }
+		te := v1.Group("/twin-events")
+		{
+			te.GET("", GetAllTwinEvents)
+			te.GET("/:interfaceId/:instanceId", GetTwinEvents)
+			te.POST("", CreateTwinEvent)
+			te.DELETE("/:interfaceId/:instanceId", DeleteTwinEvent)
+		}
 	}
 }

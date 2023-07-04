@@ -52,7 +52,7 @@ type twinInterfaceRepository struct {
 func (t *twinInterfaceRepository) GetAllTwinInterfaces() ([]domain.TwinInterface, error) {
 	var twinInstances []TwinInterface
 
-	err := t.dbConnection.GetManyWithParameters(TWIN_INTERFACE_TABLE, qb.M{}, &twinInstances)
+	err := t.dbConnection.GetManyWithoutParameters(TWIN_INTERFACE_TABLE, qb.M{}, &twinInstances)
 
 	if err != nil {
 		return []domain.TwinInterface{}, err

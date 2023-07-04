@@ -8,6 +8,7 @@ import (
 )
 
 type DBConnection interface {
+	GetManyWithoutParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
 	GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
 	GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
 	InsertQueryDB(table *table.Table, insertInterface interface{}) error
@@ -30,7 +31,7 @@ type dbConnection struct {
 }
 
 // No support for pagination
-func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
+func (db *dbConnection) GetManyWithoutParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
 	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
 
 	if err != nil {
@@ -38,6 +39,22 @@ func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.
 	}
 
 	q := session.Query(table.SelectAll()).BindMap(conditions)
+
+	if err := q.SelectRelease(returnObject); err != nil {
+		return err
+	}
+
+	return err
+}
+
+func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
+	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+
+	if err != nil {
+		return err
+	}
+
+	q := session.Query(table.Select()).BindMap(conditions)
 
 	if err := q.SelectRelease(returnObject); err != nil {
 		return err

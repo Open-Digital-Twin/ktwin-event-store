@@ -53,7 +53,7 @@ type twinInstanceRepository struct {
 func (t *twinInstanceRepository) GetAllTwinInstances() ([]domain.TwinInstance, error) {
 	var twinInstances []TwinInstance
 
-	err := t.dbConnection.GetManyWithParameters(TWIN_INSTANCE_TABLE, qb.M{}, &twinInstances)
+	err := t.dbConnection.GetManyWithoutParameters(TWIN_INSTANCE_TABLE, qb.M{}, &twinInstances)
 
 	if err != nil {
 		return []domain.TwinInstance{}, err

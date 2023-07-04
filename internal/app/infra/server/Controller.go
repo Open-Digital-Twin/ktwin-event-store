@@ -1,6 +1,7 @@
 package server
 
 import (
+	"agwermann/dt-service/internal/app/context/twinevent"
 	"agwermann/dt-service/internal/app/context/twininstance"
 	"agwermann/dt-service/internal/app/context/twininterface"
 
@@ -51,56 +52,24 @@ func DeleteTwinInstance(g *gin.Context) {
 	container.Controller.DeleteTwinInstance(g)
 }
 
-// Twin Instance Events
+// Twin Event
 
-// Get All Twin Instance Events godoc
-// @Summary Get All Twin Instances Events
-// @Schemes
-// @Description do ping
-// @Tags TwinInstanceEvents
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId}/events [get]
-// func GetAllTwinInstanceEvents(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
+func GetAllTwinEvents(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.GetAllTwinEvents(g)
+}
 
-// Get Twin Instance godoc
-// @Summary Get One Twin Instance Event
-// @Schemes
-// @Description do ping
-// @Tags TwinInstanceEvents
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId}/events/{eventId} [get]
-// func GetOneTwinInstancesEvent(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
+func GetTwinEvents(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.GetTwinEvents(g)
+}
 
-// Create Twin Instance godoc
-// @Summary Create Twin Instance Event
-// @Schemes
-// @Description This endpoint populates a Twin Instance Event.
-// @Tags TwinInstanceEvents
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId}/events [post]
-// func CreateTwinInstanceEvent(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
+func CreateTwinEvent(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.CreateTwinEvent(g)
+}
 
-// Delete Twin Instance godoc
-// @Summary Delete Twin Instance Event
-// @Schemes
-// @Description This endpoint deletes the Twin Instance Event.
-// @Tags TwinInstanceEvents
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId}/events/{eventId} [delete]
-// func DeleteTwinInstanceEvent(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
+func DeleteTwinEvent(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.DeleteTwinEvent(g)
+}
