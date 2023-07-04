@@ -2,9 +2,32 @@ package server
 
 import (
 	"agwermann/dt-service/internal/app/context/twininstance"
+	"agwermann/dt-service/internal/app/context/twininterface"
 
 	"github.com/gin-gonic/gin"
 )
+
+// Twin Interfaces
+
+func GetAllTwinInterfaces(g *gin.Context) {
+	container := twininterface.InitializeTwinInterfaceContainer()
+	container.Controller.GetAllTwinInterfaces(g)
+}
+
+func GetOneTwinInterfaces(g *gin.Context) {
+	container := twininterface.InitializeTwinInterfaceContainer()
+	container.Controller.GetAllTwinInterfaces(g)
+}
+
+func CreateTwinInterfaces(g *gin.Context) {
+	container := twininterface.InitializeTwinInterfaceContainer()
+	container.Controller.CreateTwinInterface(g)
+}
+
+func DeleteTwinInterfaces(g *gin.Context) {
+	container := twininterface.InitializeTwinInterfaceContainer()
+	container.Controller.DeleteTwinInterface(g)
+}
 
 // Twin Instances
 
@@ -27,60 +50,6 @@ func DeleteTwinInstance(g *gin.Context) {
 	container := twininstance.InitializeTwinInstanceContainer()
 	container.Controller.DeleteTwinInstance(g)
 }
-
-// Twin Instances
-
-// Get All Twin Instances godoc
-// @Summary Get All Twin Instances
-// @Schemes
-// @Description do ping
-// @Tags TwinInstance
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances [get]
-// func GetAllTwinInstances(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
-
-// Get Twin Instance godoc
-// @Summary Get One Twin Instance
-// @Schemes
-// @Description do ping
-// @Tags TwinInstance
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId} [get]
-// func GetOneTwinInstances(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
-
-// Create Twin Instance godoc
-// @Summary Create Twin Instance
-// @Schemes
-// @Description This endpoint creates a Twin Instance.
-// @Tags TwinInstance
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances [post]
-// func CreateTwinInstance(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
-
-// Delete Twin Instance godoc
-// @Summary Delete Twin Instance
-// @Schemes
-// @Description This endpoint deletes the Twin Instance.
-// @Tags TwinInstance
-// @Accept json
-// @Produce json
-// @Success 200 {string} Not Implemented
-// @Router /twin-instances/{instanceId} [delete]
-// func DeleteTwinInstance(g *gin.Context) {
-// 	g.JSON(http.StatusNotImplemented, "Not Implemented")
-// }
 
 // Twin Instance Events
 

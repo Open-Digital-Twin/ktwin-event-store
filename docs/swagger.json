@@ -98,6 +98,99 @@
                     }
                 }
             }
+        },
+        "/twin-interfaces": {
+            "get": {
+                "description": "This endpoint returns all Twin Interfaces registered in the Platform.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterfaces"
+                ],
+                "summary": "Get All Twin Interfaces",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/domain.TwinInterface"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint creates the Twin Interface.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterfaces"
+                ],
+                "summary": "Create Twin Interface",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.TwinInterface"
+                        }
+                    }
+                }
+            }
+        },
+        "/twin-interfaces/{id}": {
+            "get": {
+                "description": "This endpoint returns the Twin Interface by id.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterfaces"
+                ],
+                "summary": "Get Twin Interface by Id",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.TwinInterface"
+                        }
+                    }
+                }
+            }
+        },
+        "/twin-interfaces/{instanceId}": {
+            "delete": {
+                "description": "This endpoint deletes the Twin Interface.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TwinInterfaces"
+                ],
+                "summary": "Delete Twin Interface",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.TwinInterface"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -122,6 +215,29 @@
                     "type": "string"
                 },
                 "lastEventData": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.TwinInterface": {
+            "type": "object",
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "dataDefinition": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 },
                 "name": {
