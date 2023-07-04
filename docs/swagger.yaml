@@ -1,4 +1,15 @@
 definitions:
+  domain.TwinEvent:
+    properties:
+      createdAt:
+        type: string
+      eventData:
+        type: string
+      instanceId:
+        type: string
+      interfaceId:
+        type: string
+    type: object
   domain.TwinInstance:
     properties:
       active:
@@ -79,21 +90,23 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            items:
+              $ref: '#/definitions/domain.TwinEvent'
+            type: array
       summary: Get Twin Events
       tags:
       - TwinEvents
     post:
       consumes:
       - application/json
-      description: This endpoint populates a Twin Event Event.
+      description: This endpoint populates a Twin Event.
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            type: string
+            $ref: '#/definitions/domain.TwinEvent'
       summary: Create Twin Event
       tags:
       - TwinEvents
@@ -107,8 +120,6 @@ paths:
       responses:
         "200":
           description: OK
-          schema:
-            type: string
       summary: Delete Twin Event Event
       tags:
       - TwinEvents
@@ -122,7 +133,9 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            items:
+              $ref: '#/definitions/domain.TwinEvent'
+            type: array
       summary: Get Twin Events
       tags:
       - TwinEvents

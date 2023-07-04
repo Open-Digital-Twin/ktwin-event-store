@@ -79,13 +79,16 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/domain.TwinEvent"
+                            }
                         }
                     }
                 }
             },
             "post": {
-                "description": "This endpoint populates a Twin Event Event.",
+                "description": "This endpoint populates a Twin Event.",
                 "consumes": [
                     "application/json"
                 ],
@@ -100,7 +103,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/domain.TwinEvent"
                         }
                     }
                 }
@@ -123,7 +126,10 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/domain.TwinEvent"
+                            }
                         }
                     }
                 }
@@ -142,10 +148,7 @@ const docTemplate = `{
                 "summary": "Delete Twin Event Event",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "description": "OK"
                     }
                 }
             }
@@ -294,6 +297,23 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "domain.TwinEvent": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "eventData": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string"
+                },
+                "interfaceId": {
+                    "type": "string"
+                }
+            }
+        },
         "domain.TwinInstance": {
             "type": "object",
             "required": [

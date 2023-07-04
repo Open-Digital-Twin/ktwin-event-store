@@ -39,7 +39,7 @@ type twinEventController struct {
 // @Tags TwinEvents
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200 {object} []domain.TwinEvent
 // @Router /twin-events [get]
 func (t *twinEventController) GetAllTwinEvents(g *gin.Context) {
 	twinEvents, err := t.twinEventUseCase.GetAllTwinEvents()
@@ -61,7 +61,7 @@ func (t *twinEventController) GetAllTwinEvents(g *gin.Context) {
 // @Tags TwinEvents
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200 {object} []domain.TwinEvent
 // @Router /twin-events/{interfaceId}/{instanceId} [get]
 func (t *twinEventController) GetTwinEvents(g *gin.Context) {
 	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
@@ -87,11 +87,11 @@ func (t *twinEventController) GetTwinEvents(g *gin.Context) {
 // Create Twin Event godoc
 // @Summary Create Twin Event
 // @Schemes
-// @Description This endpoint populates a Twin Event Event.
+// @Description This endpoint populates a Twin Event.
 // @Tags TwinEvents
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200 {object} domain.TwinEvent
 // @Router /twin-events [post]
 func (t *twinEventController) CreateTwinEvent(g *gin.Context) {
 	var twinEvent domain.TwinEvent
@@ -123,7 +123,7 @@ func (t *twinEventController) CreateTwinEvent(g *gin.Context) {
 // @Tags TwinEvents
 // @Accept json
 // @Produce json
-// @Success 200 {string} Not Implemented
+// @Success 200
 // @Router /twin-events/{interfaceId}/{instanceId} [delete]
 func (t *twinEventController) DeleteTwinEvent(g *gin.Context) {
 	interfaceId, hasInterfaceId := g.Params.Get("interfaceId")
