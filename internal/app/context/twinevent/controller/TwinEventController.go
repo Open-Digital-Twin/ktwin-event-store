@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"agwermann/dt-service/internal/app/context/twinevent/domain"
-	"agwermann/dt-service/internal/app/context/twinevent/usecase"
-	"agwermann/dt-service/internal/app/infra/validator"
+	"agwermann/event-store-service/internal/app/context/twinevent/domain"
+	"agwermann/event-store-service/internal/app/context/twinevent/usecase"
+	"agwermann/event-store-service/internal/app/infra/validator"
 	"net/http"
 	"reflect"
 

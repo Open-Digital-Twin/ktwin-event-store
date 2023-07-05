@@ -4,11 +4,11 @@
 package twinevent
 
 import (
-	"agwermann/dt-service/internal/app/context/twinevent/controller"
-	"agwermann/dt-service/internal/app/context/twinevent/domain/repository"
-	"agwermann/dt-service/internal/app/context/twinevent/usecase"
-	"agwermann/dt-service/internal/app/infra/db"
-	"agwermann/dt-service/internal/app/infra/validator"
+	"agwermann/event-store-service/internal/app/context/twinevent/controller"
+	"agwermann/event-store-service/internal/app/context/twinevent/domain/repository"
+	"agwermann/event-store-service/internal/app/context/twinevent/usecase"
+	"agwermann/event-store-service/internal/app/infra/db"
+	"agwermann/event-store-service/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )

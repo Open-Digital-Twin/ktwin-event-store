@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"agwermann/dt-service/internal/app/context/twininterface/domain"
+	"agwermann/event-store-service/internal/app/context/twininterface/domain"
 )
 
 type TwinInterfaceMapper interface {

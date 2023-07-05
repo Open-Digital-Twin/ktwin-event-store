@@ -1,7 +1,7 @@
 package server
 
 import (
-	"agwermann/dt-service/docs"
+	"agwermann/event-store-service/docs"
 
 	"github.com/gin-gonic/gin"
 

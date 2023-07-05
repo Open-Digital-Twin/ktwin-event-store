@@ -1,6 +1,6 @@
 package repository
 
-import "agwermann/dt-service/internal/app/context/twininstance/domain"
+import "agwermann/event-store-service/internal/app/context/twininstance/domain"
 
 type TwinInstanceMapper interface {
 	ToDomainList(twinInstances []TwinInstance) []domain.TwinInstance

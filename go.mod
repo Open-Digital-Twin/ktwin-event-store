@@ -1,4 +1,4 @@
-module agwermann/dt-service
+module agwermann/event-store-service
 
 go 1.19
 

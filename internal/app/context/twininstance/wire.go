@@ -4,11 +4,11 @@
 package twininstance
 
 import (
-	"agwermann/dt-service/internal/app/context/twininstance/controller"
-	"agwermann/dt-service/internal/app/context/twininstance/domain/repository"
-	"agwermann/dt-service/internal/app/context/twininstance/usecase"
-	"agwermann/dt-service/internal/app/infra/db"
-	"agwermann/dt-service/internal/app/infra/validator"
+	"agwermann/event-store-service/internal/app/context/twininstance/controller"
+	"agwermann/event-store-service/internal/app/context/twininstance/domain/repository"
+	"agwermann/event-store-service/internal/app/context/twininstance/usecase"
+	"agwermann/event-store-service/internal/app/infra/db"
+	"agwermann/event-store-service/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )

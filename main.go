@@ -1,7 +1,7 @@
 package main
 
 import (
-	"agwermann/dt-service/internal/app"
+	"agwermann/event-store-service/internal/app"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"agwermann/dt-service/internal/app/context/twinevent/domain"
-	"agwermann/dt-service/internal/app/infra/db"
+	"agwermann/event-store-service/internal/app/context/twinevent/domain"
+	"agwermann/event-store-service/internal/app/infra/db"
 	"time"
 
 	"github.com/scylladb/gocqlx/v2/qb"

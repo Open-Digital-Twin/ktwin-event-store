@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"agwermann/dt-service/internal/app/context/twininterface/domain"
-	"agwermann/dt-service/internal/app/context/twininterface/domain/repository"
+	"agwermann/event-store-service/internal/app/context/twininterface/domain"
+	"agwermann/event-store-service/internal/app/context/twininterface/domain/repository"
 )
 
 func NewTwinInterfaceUseCase(

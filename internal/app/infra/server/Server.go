@@ -1,7 +1,7 @@
 package server
 
 import (
-	"agwermann/dt-service/internal/app/infra/middleware"
+	"agwermann/event-store-service/internal/app/infra/middleware"
 
 	"github.com/gin-gonic/gin"
 )
