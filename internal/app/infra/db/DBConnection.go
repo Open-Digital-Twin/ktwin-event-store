@@ -1,6 +1,8 @@
 package db
 
 import (
+	"agwermann/event-store-service/internal/app/config"
+
 	"github.com/gocql/gocql"
 	"github.com/scylladb/gocqlx/v2"
 	"github.com/scylladb/gocqlx/v2/qb"
@@ -16,10 +18,10 @@ type DBConnection interface {
 }
 
 func NewDBConnection() DBConnection {
-	host := "localhost"
+	host := config.GetConfig("DB_HOST")
 
 	dbCluster := gocql.NewCluster(host)
-	dbCluster.Keyspace = "ktwin"
+	dbCluster.Keyspace = config.GetConfig("DB_KEYSPACE")
 
 	return &dbConnection{
 		dbCluster: dbCluster,

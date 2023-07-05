@@ -1,6 +1,10 @@
 build:
 	go build -o ./
 
+run-local:
+	export LOCAL=true && \
+	go run .
+
 run:
 	go run .
 
