@@ -1,4 +1,4 @@
-module agwermann/event-store-service
+module github.com/ktwins/event-store
 
 go 1.19
 

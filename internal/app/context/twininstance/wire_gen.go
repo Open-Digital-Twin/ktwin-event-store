@@ -7,11 +7,11 @@
 package twininstance
 
 import (
-	"agwermann/event-store-service/internal/app/context/twininstance/controller"
-	"agwermann/event-store-service/internal/app/context/twininstance/domain/repository"
-	"agwermann/event-store-service/internal/app/context/twininstance/usecase"
-	"agwermann/event-store-service/internal/app/infra/db"
-	"agwermann/event-store-service/internal/app/infra/validator"
+	"github.com/ktwins/event-store/internal/app/context/twininstance/controller"
+	"github.com/ktwins/event-store/internal/app/context/twininstance/domain/repository"
+	"github.com/ktwins/event-store/internal/app/context/twininstance/usecase"
+	"github.com/ktwins/event-store/internal/app/infra/db"
+	"github.com/ktwins/event-store/internal/app/infra/validator"
 )
 
 // Injectors from wire.go:

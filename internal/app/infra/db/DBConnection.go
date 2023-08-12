@@ -1,7 +1,7 @@
 package db
 
 import (
-	"agwermann/event-store-service/internal/app/config"
+	"github.com/ktwins/event-store/internal/app/config"
 
 	"github.com/gocql/gocql"
 	"github.com/scylladb/gocqlx/v2"

@@ -4,11 +4,11 @@
 package twininterface
 
 import (
-	"agwermann/event-store-service/internal/app/context/twininterface/controller"
-	"agwermann/event-store-service/internal/app/context/twininterface/domain/repository"
-	"agwermann/event-store-service/internal/app/context/twininterface/usecase"
-	"agwermann/event-store-service/internal/app/infra/db"
-	"agwermann/event-store-service/internal/app/infra/validator"
+	"github.com/ktwins/event-store/internal/app/context/twininterface/controller"
+	"github.com/ktwins/event-store/internal/app/context/twininterface/domain/repository"
+	"github.com/ktwins/event-store/internal/app/context/twininterface/usecase"
+	"github.com/ktwins/event-store/internal/app/infra/db"
+	"github.com/ktwins/event-store/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )

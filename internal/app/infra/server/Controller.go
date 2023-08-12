@@ -1,9 +1,9 @@
 package server
 
 import (
-	"agwermann/event-store-service/internal/app/context/twinevent"
-	"agwermann/event-store-service/internal/app/context/twininstance"
-	"agwermann/event-store-service/internal/app/context/twininterface"
+	"github.com/ktwins/event-store/internal/app/context/twinevent"
+	"github.com/ktwins/event-store/internal/app/context/twininstance"
+	"github.com/ktwins/event-store/internal/app/context/twininterface"
 
 	"github.com/gin-gonic/gin"
 )

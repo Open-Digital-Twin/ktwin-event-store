@@ -1,6 +1,6 @@
 package repository
 
-import "agwermann/event-store-service/internal/app/context/twinevent/domain"
+import "github.com/ktwins/event-store/internal/app/context/twinevent/domain"
 
 type TwinEventMapper interface {
 	ToDomainList(twinEvents []TwinEvent) []domain.TwinEvent

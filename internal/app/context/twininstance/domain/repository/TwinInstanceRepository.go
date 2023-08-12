@@ -1,9 +1,10 @@
 package repository
 
 import (
-	"agwermann/event-store-service/internal/app/context/twininstance/domain"
-	"agwermann/event-store-service/internal/app/infra/db"
 	"time"
+
+	"github.com/ktwins/event-store/internal/app/context/twininstance/domain"
+	"github.com/ktwins/event-store/internal/app/infra/db"
 
 	"github.com/scylladb/gocqlx/v2/qb"
 	"github.com/scylladb/gocqlx/v2/table"

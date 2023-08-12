@@ -1,11 +1,12 @@
 package controller
 
 import (
-	"agwermann/event-store-service/internal/app/context/twininterface/domain"
-	"agwermann/event-store-service/internal/app/context/twininterface/usecase"
-	"agwermann/event-store-service/internal/app/infra/validator"
 	"net/http"
 	"reflect"
+
+	"github.com/ktwins/event-store/internal/app/context/twininterface/domain"
+	"github.com/ktwins/event-store/internal/app/context/twininterface/usecase"
+	"github.com/ktwins/event-store/internal/app/infra/validator"
 
 	"github.com/gin-gonic/gin"
 )

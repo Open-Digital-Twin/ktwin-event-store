@@ -1,8 +1,8 @@
 package server
 
 import (
-	"agwermann/event-store-service/internal/app/config"
-	"agwermann/event-store-service/internal/app/infra/middleware"
+	"github.com/ktwins/event-store/internal/app/config"
+	"github.com/ktwins/event-store/internal/app/infra/middleware"
 
 	"github.com/gin-gonic/gin"
 )

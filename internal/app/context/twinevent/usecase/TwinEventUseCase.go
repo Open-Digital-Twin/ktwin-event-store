@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"agwermann/event-store-service/internal/app/context/twinevent/domain"
-	"agwermann/event-store-service/internal/app/context/twinevent/domain/repository"
+	"github.com/ktwins/event-store/internal/app/context/twinevent/domain"
+	"github.com/ktwins/event-store/internal/app/context/twinevent/domain/repository"
 )
 
 func NewTwinEventUseCase(

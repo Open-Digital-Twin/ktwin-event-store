@@ -1,7 +1,7 @@
 package main
 
 import (
-	"agwermann/event-store-service/internal/app"
+	"github.com/ktwins/event-store/internal/app"
 )
 
 func main() {

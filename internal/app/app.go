@@ -1,7 +1,7 @@
 package app
 
 import (
-	"agwermann/event-store-service/internal/app/infra/server"
+	"github.com/ktwins/event-store/internal/app/infra/server"
 )
 
 func StartApp() {
