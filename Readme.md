@@ -1,3 +1,17 @@
-# Digital Twin Service
+# KTWIN Event Store
 
-This is a backend service for the Digital Twin Serverless Platform.
+KTWIN Event Store service.
+
+
+## Build
+
+```sh
+docker build -t ktwin/event-store:0.1 .
+```
+
+## Load in Kind Development Environment
+
+```sh
+docker build -t dev.local/ktwin/event-store:0.1 .
+kind load docker-image dev.local/ktwin/event-store:0.1
+```
