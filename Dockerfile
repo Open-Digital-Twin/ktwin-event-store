@@ -15,7 +15,6 @@ FROM alpine
 WORKDIR /app
 COPY --from=build /event-store-service /
 
-ENV APP_ENV=integration
 EXPOSE 8080
 
 ENTRYPOINT [ "/event-store-service" ]
