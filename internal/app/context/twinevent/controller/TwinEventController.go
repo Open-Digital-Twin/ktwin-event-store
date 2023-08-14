@@ -3,10 +3,13 @@ package controller
 import (
 	"net/http"
 	"reflect"
+	"strings"
 
 	"github.com/ktwins/event-store/internal/app/context/twinevent/domain"
 	"github.com/ktwins/event-store/internal/app/context/twinevent/usecase"
 	"github.com/ktwins/event-store/internal/app/infra/validator"
+
+	cloudEvents "github.com/cloudevents/sdk-go/v2"
 
 	"github.com/gin-gonic/gin"
 )
@@ -95,8 +98,19 @@ func (t *twinEventController) GetTwinEvents(g *gin.Context) {
 // @Success 200 {object} domain.TwinEvent
 // @Router /twin-events [post]
 func (t *twinEventController) CreateTwinEvent(g *gin.Context) {
-	var twinEvent domain.TwinEvent
-	err := g.BindJSON(&twinEvent)
+	cloudEvent, err := cloudEvents.NewEventFromHTTPRequest(g.Request)
+
+	if err != nil {
+		g.JSON(http.StatusBadRequest, "Invalid Cloud event: "+err.Error())
+		return
+	}
+
+	twinEvent := domain.TwinEvent{
+		InterfaceId: extractInstanceId(cloudEvent.Type()),
+		InstanceId:  cloudEvent.Source(),
+		EventData:   string(cloudEvent.Data()),
+		CreatedAt:   cloudEvent.Time(),
+	}
 
 	if err != nil {
 		g.JSON(http.StatusBadRequest, "Error: "+err.Error())
@@ -115,6 +129,16 @@ func (t *twinEventController) CreateTwinEvent(g *gin.Context) {
 	} else {
 		g.JSON(http.StatusAccepted, "")
 	}
+}
+
+func extractInstanceId(eventType string) string {
+	eType := strings.Split(eventType, ".")
+
+	if len(eType) > 2 {
+		return eType[2]
+	}
+
+	return eventType
 }
 
 // Delete Twin Event godoc
