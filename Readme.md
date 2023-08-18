@@ -6,7 +6,13 @@ KTWIN Event Store service.
 ## Build
 
 ```sh
-docker build -t ktwin/event-store:0.1 .
+docker build -t ghcr.io/ktwins/event-store:0.1 .
+```
+
+## Push Container
+
+```sh
+docker push ghcr.io/ktwins/event-store:0.1
 ```
 
 ## Load in Kind Development Environment
