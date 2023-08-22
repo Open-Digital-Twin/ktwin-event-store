@@ -4,10 +4,20 @@ definitions:
       createdAt:
         type: string
       eventData:
+        items:
+          type: integer
+        type: array
+      id:
         type: string
       instanceId:
         type: string
       interfaceId:
+        type: string
+      source:
+        type: string
+      time:
+        type: string
+      type:
         type: string
     type: object
   domain.TwinInstance:
@@ -99,7 +109,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: This endpoint populates a Twin Event.
+      description: This endpoint updates the latest TwinEvent.
       produces:
       - application/json
       responses:
@@ -107,7 +117,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/domain.TwinEvent'
-      summary: Create Twin Event
+      summary: Update Twin Event
       tags:
       - TwinEvents
   /twin-events/{interfaceId}/{instanceId}:

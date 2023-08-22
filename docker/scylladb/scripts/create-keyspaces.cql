@@ -28,6 +28,10 @@ PRIMARY KEY((interface_id, id)));
 -- twin_event
 
 CREATE TABLE twin_event (
+id text,
+time timestamp,
+type text,
+source text,
 instance_id text,
 interface_id text,
 event_data text,
@@ -49,12 +53,11 @@ INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "la
 INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_02_01_id', 'Sensor_02_01', 'Sensor', true, 'Machine_02', '', toTimestamp(now()));
 INSERT INTO twin_instance ("id", "name", "interface_id", "active", "parent", "last_event_data", "created_at") VALUES ('Sensor_02_02_id', 'Sensor_02_02', 'Sensor', true, 'Machine_02', '', toTimestamp(now()));
 
-
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));
-INSERT INTO twin_event ("instance_id","interface_id","event_data","created_at") VALUES ('Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_01_01','Sensor', 'Sensor_01_01_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_01_02','Sensor', 'Sensor_01_02_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_02_01','Sensor', 'Sensor_02_01_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));
+-- INSERT INTO twin_event ("id", "time", "type", "source", "instance_id", "interface_id", "event_data", "created_at") VALUES ('id', toTimestamp(now()), 'type', 'source', 'Sensor_02_02','Sensor', 'Sensor_02_02_DATA', toTimestamp(now()));

@@ -2,7 +2,6 @@
 
 KTWIN Event Store service.
 
-
 ## Build
 
 ```sh

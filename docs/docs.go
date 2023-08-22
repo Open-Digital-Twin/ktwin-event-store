@@ -88,7 +88,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "description": "This endpoint populates a Twin Event.",
+                "description": "This endpoint updates the latest TwinEvent.",
                 "consumes": [
                     "application/json"
                 ],
@@ -98,7 +98,7 @@ const docTemplate = `{
                 "tags": [
                     "TwinEvents"
                 ],
-                "summary": "Create Twin Event",
+                "summary": "Update Twin Event",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -304,12 +304,27 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "eventData": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "id": {
                     "type": "string"
                 },
                 "instanceId": {
                     "type": "string"
                 },
                 "interfaceId": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "string"
+                },
+                "type": {
                     "type": "string"
                 }
             }
@@ -381,6 +396,8 @@ var SwaggerInfo = &swag.Spec{
 	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
+	LeftDelim:        "{{",
+	RightDelim:       "}}",
 }
 
 func init() {

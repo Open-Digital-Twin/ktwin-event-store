@@ -27,7 +27,8 @@ func ConfigureRoutes(r *gin.Engine) {
 		{
 			te.GET("", GetAllTwinEvents)
 			te.GET("/:interfaceId/:instanceId", GetTwinEvents)
-			te.POST("", CreateTwinEvent)
+			te.GET("/:interfaceId/:instanceId/latest", GetLatestTwinEvent)
+			te.POST("", UpdateTwinEvent)
 			te.DELETE("/:interfaceId/:instanceId", DeleteTwinEvent)
 		}
 	}

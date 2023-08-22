@@ -64,9 +64,19 @@ func GetTwinEvents(g *gin.Context) {
 	container.Controller.GetTwinEvents(g)
 }
 
+func GetLatestTwinEvent(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.GetLatestTwinEvent(g)
+}
+
 func CreateTwinEvent(g *gin.Context) {
 	container := twinevent.InitializeTwinEventContainer()
 	container.Controller.CreateTwinEvent(g)
+}
+
+func UpdateTwinEvent(g *gin.Context) {
+	container := twinevent.InitializeTwinEventContainer()
+	container.Controller.UpdateTwinEvent(g)
 }
 
 func DeleteTwinEvent(g *gin.Context) {
