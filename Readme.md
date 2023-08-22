@@ -39,8 +39,8 @@ kubectl port-forward --address 0.0.0.0 -n scylla svc/scylla-client 9042:9042
 You can manually run the scripts in any of the ScyllaDB nodes.
 
 ```sh
-kubectl get pods -n scylla
-kubectl exec -ti scylla-us-east-1-us-east-1b-1 bash -n scylla
+kubectl get pods -n ktwin
+kubectl exec -ti scylla-us-east-1-us-east-1b-1 bash -n ktwin
 cqlsh
 ```
 
