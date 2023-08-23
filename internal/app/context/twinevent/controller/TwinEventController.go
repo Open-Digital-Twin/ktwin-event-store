@@ -127,6 +127,7 @@ func (t *twinEventController) GetLatestTwinEvent(g *gin.Context) {
 		g.Header("ce-type", twinEvent.Type)
 		g.Header("ce-source", twinEvent.Source)
 		g.Header("ce-timestamp", twinEvent.Time.String())
+		g.Header("ce-specversion", "1.0")
 		g.JSON(http.StatusOK, response)
 	}
 }
