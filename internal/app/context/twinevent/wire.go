@@ -4,11 +4,11 @@
 package twinevent
 
 import (
-	"github.com/ktwins/event-store/internal/app/context/twinevent/controller"
-	"github.com/ktwins/event-store/internal/app/context/twinevent/domain/repository"
-	"github.com/ktwins/event-store/internal/app/context/twinevent/usecase"
-	"github.com/ktwins/event-store/internal/app/infra/db"
-	"github.com/ktwins/event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/controller"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/domain/repository"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/usecase"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/db"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )

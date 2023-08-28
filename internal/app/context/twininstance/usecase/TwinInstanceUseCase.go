@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"github.com/ktwins/event-store/internal/app/context/twininstance/domain"
-	"github.com/ktwins/event-store/internal/app/context/twininstance/domain/repository"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininstance/domain"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininstance/domain/repository"
 )
 
 func NewTwinInstanceUseCase(

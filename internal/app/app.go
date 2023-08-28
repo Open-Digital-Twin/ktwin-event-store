@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/ktwins/event-store/internal/app/infra/server"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/server"
 )
 
 func StartApp() {

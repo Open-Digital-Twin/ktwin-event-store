@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/ktwins/event-store/internal/app/config"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/config"
 
 	"github.com/gocql/gocql"
 	"github.com/scylladb/gocqlx/v2"

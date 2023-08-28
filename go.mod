@@ -1,4 +1,4 @@
-module github.com/ktwins/event-store
+module github.com/Open-Digital-Twin/ktwin-event-store
 
 go 1.19
 

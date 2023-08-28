@@ -6,9 +6,9 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ktwins/event-store/internal/app/context/twinevent/domain"
-	"github.com/ktwins/event-store/internal/app/context/twinevent/usecase"
-	"github.com/ktwins/event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/domain"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/usecase"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
 
 	cloudEvents "github.com/cloudevents/sdk-go/v2"
 

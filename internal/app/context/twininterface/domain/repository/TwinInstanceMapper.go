@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/ktwins/event-store/internal/app/context/twininterface/domain"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininterface/domain"
 )
 
 type TwinInterfaceMapper interface {

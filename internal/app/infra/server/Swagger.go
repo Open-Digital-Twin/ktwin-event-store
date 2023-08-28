@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/ktwins/event-store/docs"
+	"github.com/Open-Digital-Twin/ktwin-event-store/docs"
 
 	"github.com/gin-gonic/gin"
 

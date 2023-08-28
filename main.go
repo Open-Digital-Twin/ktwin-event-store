@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ktwins/event-store/internal/app"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app"
 )
 
 func main() {

@@ -3,8 +3,8 @@ package repository
 import (
 	"time"
 
-	"github.com/ktwins/event-store/internal/app/context/twininterface/domain"
-	"github.com/ktwins/event-store/internal/app/infra/db"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininterface/domain"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/db"
 
 	"github.com/scylladb/gocqlx/v2/qb"
 	"github.com/scylladb/gocqlx/v2/table"

@@ -5,8 +5,8 @@ import (
 	"reflect"
 
 	"dario.cat/mergo"
-	"github.com/ktwins/event-store/internal/app/context/twinevent/domain"
-	"github.com/ktwins/event-store/internal/app/context/twinevent/domain/repository"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/domain"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/domain/repository"
 )
 
 func NewTwinEventUseCase(

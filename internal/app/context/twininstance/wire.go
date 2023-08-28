@@ -4,11 +4,11 @@
 package twininstance
 
 import (
-	"github.com/ktwins/event-store/internal/app/context/twininstance/controller"
-	"github.com/ktwins/event-store/internal/app/context/twininstance/domain/repository"
-	"github.com/ktwins/event-store/internal/app/context/twininstance/usecase"
-	"github.com/ktwins/event-store/internal/app/infra/db"
-	"github.com/ktwins/event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininstance/controller"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininstance/domain/repository"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twininstance/usecase"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/db"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
 
 	"github.com/google/wire"
 )

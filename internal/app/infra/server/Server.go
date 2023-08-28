@@ -1,8 +1,8 @@
 package server
 
 import (
-	"github.com/ktwins/event-store/internal/app/config"
-	"github.com/ktwins/event-store/internal/app/infra/middleware"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/config"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/middleware"
 
 	"github.com/gin-gonic/gin"
 )
