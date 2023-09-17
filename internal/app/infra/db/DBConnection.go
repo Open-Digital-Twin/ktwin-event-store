@@ -15,6 +15,7 @@ type DBConnection interface {
 	GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error
 	InsertQueryDB(table *table.Table, insertInterface interface{}) error
 	DeleteQuery(table *table.Table, conditions qb.M) error
+	CloseSession()
 }
 
 func NewDBConnection() DBConnection {
@@ -30,11 +31,23 @@ func NewDBConnection() DBConnection {
 
 type dbConnection struct {
 	dbCluster *gocql.ClusterConfig
+	session   *gocqlx.Session
+}
+
+func (db *dbConnection) loadSession() (*gocqlx.Session, error) {
+	if db.session == nil {
+		newSession, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+		if err != nil {
+			return nil, err
+		}
+		db.session = &newSession
+	}
+	return db.session, nil
 }
 
 // No support for pagination
 func (db *dbConnection) GetManyWithoutParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
-	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+	session, err := db.loadSession()
 
 	if err != nil {
 		return err
@@ -50,7 +63,7 @@ func (db *dbConnection) GetManyWithoutParameters(table *table.Table, conditions 
 }
 
 func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
-	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+	session, err := db.loadSession()
 
 	if err != nil {
 		return err
@@ -66,7 +79,7 @@ func (db *dbConnection) GetManyWithParameters(table *table.Table, conditions qb.
 }
 
 func (db *dbConnection) GetOneWithParameters(table *table.Table, conditions qb.M, returnObject interface{}) error {
-	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+	session, err := db.loadSession()
 
 	if err != nil {
 		return err
@@ -82,7 +95,7 @@ func (db *dbConnection) GetOneWithParameters(table *table.Table, conditions qb.M
 }
 
 func (db *dbConnection) InsertQueryDB(table *table.Table, insertInterface interface{}) error {
-	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+	session, err := db.loadSession()
 
 	if err != nil {
 		return err
@@ -98,7 +111,7 @@ func (db *dbConnection) InsertQueryDB(table *table.Table, insertInterface interf
 }
 
 func (db *dbConnection) DeleteQuery(table *table.Table, conditions qb.M) error {
-	session, err := gocqlx.WrapSession(db.dbCluster.CreateSession())
+	session, err := db.loadSession()
 
 	if err != nil {
 		return err
@@ -111,4 +124,8 @@ func (db *dbConnection) DeleteQuery(table *table.Table, conditions qb.M) error {
 	}
 
 	return err
+}
+
+func (db *dbConnection) CloseSession() {
+	defer db.session.Close()
 }

@@ -31,23 +31,28 @@ type twinEventUseCase struct {
 }
 
 func (t *twinEventUseCase) GetAllTwinEvents() ([]domain.TwinEvent, error) {
+	defer t.repository.CloseSession()
 	return t.repository.GetAllTwinEvents()
 }
 
 func (t *twinEventUseCase) GetTwinEvents(interfaceId string, instanceId string) ([]domain.TwinEvent, error) {
+	defer t.repository.CloseSession()
 	return t.repository.GetTwinEvents(interfaceId, instanceId)
 }
 
 func (t *twinEventUseCase) GetLatestTwinEvent(interfaceId string, instanceId string) (domain.TwinEvent, error) {
+	defer t.repository.CloseSession()
 	return t.repository.GetLatestTwinEvent(interfaceId, instanceId)
 }
 
 func (t *twinEventUseCase) CreateTwinEvent(twinEvent domain.TwinEvent) error {
+	defer t.repository.CloseSession()
 	return t.repository.CreateTwinEvent(twinEvent)
 }
 
 func (t *twinEventUseCase) UpdateTwinEvent(twinEvent domain.TwinEvent) error {
 	latestTwinEvent, err := t.repository.GetLatestTwinEvent(twinEvent.InterfaceId, twinEvent.InstanceId)
+	defer t.repository.CloseSession()
 
 	if err != nil {
 		return err
@@ -88,5 +93,6 @@ func (t *twinEventUseCase) UpdateTwinEvent(twinEvent domain.TwinEvent) error {
 }
 
 func (t *twinEventUseCase) DeleteTwinEvent(interfaceId string, id string) error {
+	defer t.repository.CloseSession()
 	return t.repository.DeleteTwinEvent(interfaceId, interfaceId)
 }
