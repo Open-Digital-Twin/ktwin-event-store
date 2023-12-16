@@ -31,7 +31,7 @@ type TwinInstanceContainer struct {
 	UseCase    usecase.TwinInstanceUseCase
 }
 
-func InitializeTwinInstanceContainer() TwinInstanceContainer {
+func InitializeTwinInstanceContainer(dbConnection db.DBConnection) TwinInstanceContainer {
 	wire.Build(
 		NewTwinInstanceContainer,
 		controller.NewTwinInstanceController,
@@ -40,7 +40,6 @@ func InitializeTwinInstanceContainer() TwinInstanceContainer {
 		repository.NewTwinInstanceMapper,
 
 		validator.NewValidator,
-		db.NewDBConnection,
 	)
 
 	return TwinInstanceContainer{}

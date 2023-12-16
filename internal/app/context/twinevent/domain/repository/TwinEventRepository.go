@@ -36,7 +36,6 @@ type TwinEventRepository interface {
 	GetLatestTwinEvent(interfaceId string, instanceId string) (domain.TwinEvent, error)
 	CreateTwinEvent(twinInterface domain.TwinEvent) error
 	DeleteTwinEvent(interfaceId string, id string) error
-	CloseSession()
 }
 
 func NewTwinEventRepository(
@@ -106,8 +105,4 @@ func (t *twinEventRepository) DeleteTwinEvent(interfaceId string, instanceId str
 
 func (t *twinEventRepository) getConditions(interfaceId string, instanceId string) qb.M {
 	return qb.M{"interface_id": interfaceId, "instance_id": instanceId}
-}
-
-func (t *twinEventRepository) CloseSession() {
-	defer t.dbConnection.CloseSession()
 }

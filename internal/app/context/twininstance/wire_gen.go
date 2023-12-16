@@ -16,8 +16,7 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeTwinInstanceContainer() TwinInstanceContainer {
-	dbConnection := db.NewDBConnection()
+func InitializeTwinInstanceContainer(dbConnection db.DBConnection) TwinInstanceContainer {
 	twinInstanceMapper := repository.NewTwinInstanceMapper()
 	twinInstanceRepository := repository.NewTwinInstanceRepository(dbConnection, twinInstanceMapper)
 	twinInstanceUseCase := usecase.NewTwinInstanceUseCase(twinInstanceRepository)

@@ -31,7 +31,7 @@ type TwinEventContainer struct {
 	UseCase    usecase.TwinEventUseCase
 }
 
-func InitializeTwinEventContainer() TwinEventContainer {
+func InitializeTwinEventContainer(dbConnection db.DBConnection) TwinEventContainer {
 	wire.Build(
 		NewTwinEventContainer,
 		controller.NewTwinEventController,
@@ -40,7 +40,6 @@ func InitializeTwinEventContainer() TwinEventContainer {
 		repository.NewTwinEventMapper,
 
 		validator.NewValidator,
-		db.NewDBConnection,
 	)
 
 	return TwinEventContainer{}

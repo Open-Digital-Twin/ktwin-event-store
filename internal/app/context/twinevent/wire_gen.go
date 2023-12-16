@@ -16,9 +16,8 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeTwinEventContainer() TwinEventContainer {
+func InitializeTwinEventContainer(dbConnection db.DBConnection) TwinEventContainer {
 	twinEventMapper := repository.NewTwinEventMapper()
-	dbConnection := db.NewDBConnection()
 	twinEventRepository := repository.NewTwinEventRepository(twinEventMapper, dbConnection)
 	twinEventUseCase := usecase.NewTwinEventUseCase(twinEventRepository)
 	validatorValidator := validator.NewValidator()

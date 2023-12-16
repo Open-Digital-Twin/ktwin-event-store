@@ -16,8 +16,7 @@ import (
 
 // Injectors from wire.go:
 
-func InitializeTwinInterfaceContainer() TwinInterfaceContainer {
-	dbConnection := db.NewDBConnection()
+func InitializeTwinInterfaceContainer(dbConnection db.DBConnection) TwinInterfaceContainer {
 	twinInterfaceMapper := repository.NewTwinInterfaceMapper()
 	twinInterfaceRepository := repository.NewTwinInterfaceRepository(dbConnection, twinInterfaceMapper)
 	twinInterfaceUseCase := usecase.NewTwinInterfaceUseCase(twinInterfaceRepository)
