@@ -14,3 +14,6 @@ swag:
 wire:
 	wire ./internal/app && \
 	wire ./internal/app/context/...
+	
+docker-build-push:
+	docker build -t ghcr.io/open-digital-twin/ktwin-event-store:0.1 . && docker push ghcr.io/open-digital-twin/ktwin-event-store:0.1
