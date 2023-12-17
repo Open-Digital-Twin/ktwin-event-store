@@ -12,6 +12,7 @@ import (
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/usecase"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/db"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/pkg/log"
 )
 
 // Injectors from wire.go:
@@ -21,7 +22,8 @@ func InitializeTwinEventContainer(dbConnection db.DBConnection) TwinEventContain
 	twinEventRepository := repository.NewTwinEventRepository(twinEventMapper, dbConnection)
 	twinEventUseCase := usecase.NewTwinEventUseCase(twinEventRepository)
 	validatorValidator := validator.NewValidator()
-	twinEventController := controller.NewTwinEventController(twinEventUseCase, validatorValidator)
+	logger := log.NewLogger()
+	twinEventController := controller.NewTwinEventController(twinEventUseCase, validatorValidator, logger)
 	twinEventContainer := NewTwinEventContainer(twinEventController, twinEventRepository, twinEventUseCase)
 	return twinEventContainer
 }

@@ -9,6 +9,7 @@ import (
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/usecase"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/db"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/pkg/log"
 
 	"github.com/google/wire"
 )
@@ -40,6 +41,7 @@ func InitializeTwinEventContainer(dbConnection db.DBConnection) TwinEventContain
 		repository.NewTwinEventMapper,
 
 		validator.NewValidator,
+		log.NewLogger,
 	)
 
 	return TwinEventContainer{}

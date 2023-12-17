@@ -9,6 +9,7 @@ import (
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/domain"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/context/twinevent/usecase"
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/infra/validator"
+	"github.com/Open-Digital-Twin/ktwin-event-store/internal/pkg/log"
 
 	cloudEvents "github.com/cloudevents/sdk-go/v2"
 
@@ -27,16 +28,19 @@ type TwinEventController interface {
 func NewTwinEventController(
 	twinEventUseCase usecase.TwinEventUseCase,
 	validator validator.Validator,
+	logger log.Logger,
 ) TwinEventController {
 	return &twinEventController{
 		twinEventUseCase: twinEventUseCase,
 		validator:        validator,
+		logger:           logger,
 	}
 }
 
 type twinEventController struct {
 	twinEventUseCase usecase.TwinEventUseCase
 	validator        validator.Validator
+	logger           log.Logger
 }
 
 // Get Twin Event Events godoc
@@ -53,6 +57,7 @@ func (t *twinEventController) GetAllTwinEvents(g *gin.Context) {
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+		t.logger.Error("Error: " + err.Error())
 		return
 	} else if reflect.DeepEqual(twinEvents, domain.TwinEvent{}) {
 		g.JSON(http.StatusNotFound, "Not Found")
@@ -83,6 +88,7 @@ func (t *twinEventController) GetTwinEvents(g *gin.Context) {
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+		t.logger.Error("Error: " + err.Error())
 		return
 	} else if reflect.DeepEqual(twinInstance, domain.TwinEvent{}) {
 		g.JSON(http.StatusNotFound, "Not Found")
@@ -113,6 +119,7 @@ func (t *twinEventController) GetLatestTwinEvent(g *gin.Context) {
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+		t.logger.Error("Error: " + err.Error())
 		return
 	} else if reflect.DeepEqual(twinEvent, domain.TwinEvent{}) {
 		g.JSON(http.StatusNotFound, "Not Found")
@@ -174,6 +181,7 @@ func (t *twinEventController) CreateTwinEvent(g *gin.Context) {
 
 	if err != nil {
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
+		t.logger.Error("Error: " + err.Error())
 	} else {
 		g.JSON(http.StatusAccepted, "")
 	}
@@ -208,6 +216,7 @@ func (t *twinEventController) UpdateTwinEvent(g *gin.Context) {
 	}
 
 	if err != nil {
+		t.logger.Error("Error: " + err.Error())
 		g.JSON(http.StatusBadRequest, "Error: "+err.Error())
 		return
 	}
@@ -220,6 +229,7 @@ func (t *twinEventController) UpdateTwinEvent(g *gin.Context) {
 	err = t.twinEventUseCase.UpdateTwinEvent(twinEvent)
 
 	if err != nil {
+		t.logger.Error("Error: " + err.Error())
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
 	} else {
 		g.JSON(http.StatusAccepted, "")
@@ -257,6 +267,7 @@ func (t *twinEventController) DeleteTwinEvent(g *gin.Context) {
 	err := t.twinEventUseCase.DeleteTwinEvent(interfaceId, instanceId)
 
 	if err != nil {
+		t.logger.Error("Error: " + err.Error())
 		g.JSON(http.StatusInternalServerError, "Error: "+err.Error())
 	} else {
 		g.JSON(http.StatusOK, "")
