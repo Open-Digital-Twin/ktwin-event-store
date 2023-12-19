@@ -1,6 +1,8 @@
 package db
 
 import (
+	"time"
+
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/config"
 
 	"github.com/gocql/gocql"
@@ -23,6 +25,11 @@ func NewDBConnection() DBConnection {
 
 	dbCluster := gocql.NewCluster(host)
 	dbCluster.Keyspace = config.GetConfig("DB_KEYSPACE")
+	timeoutString := config.GetConfig("TIMEOUT")
+	timeDuration, err := time.ParseDuration(timeoutString + "ms")
+	if err == nil && timeDuration != 0 {
+		dbCluster.Timeout = timeDuration
+	}
 
 	return &dbConnection{
 		dbCluster: dbCluster,
