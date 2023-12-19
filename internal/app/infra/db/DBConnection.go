@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/Open-Digital-Twin/ktwin-event-store/internal/app/config"
@@ -27,7 +28,13 @@ func NewDBConnection() DBConnection {
 	dbCluster.Keyspace = config.GetConfig("DB_KEYSPACE")
 	timeoutString := config.GetConfig("TIMEOUT")
 	timeDuration, err := time.ParseDuration(timeoutString + "ms")
+
+	if err != nil {
+		fmt.Println("Error while parsing timeout: ", timeoutString)
+	}
+
 	if err == nil && timeDuration != 0 {
+		fmt.Printf("Setting timeout value: %d\n", timeDuration)
 		dbCluster.Timeout = timeDuration
 	}
 
